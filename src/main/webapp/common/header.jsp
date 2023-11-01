@@ -20,7 +20,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 </a>
 
 <header class="header">
-    <a href="" class="header__logo-shop"> <img src="../assets/images/logo/logo.png" alt="logo"></a>
+    <a href="" class="header__logo-shop"> <img src="assets/images/logo/logo.png" alt="logo"></a>
     <div class="header__navbar">
         <ul class="header__navbar-list">
             <li class="navbar-item"><a href="index.html"><span>Trang chủ</span></a></li>
