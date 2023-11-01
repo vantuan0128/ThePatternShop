@@ -50,7 +50,7 @@
                             <input type="text" class="user-email-fill" placeholder="Nhập địa chỉ email của bạn">
                             <div class="iconbutton">
                                 <a href="" class="icon-arrow-right-sax">
-                                    <img src="/imgs/arrowright.png" alt="Arrow to">
+                                    <img src="assets/images/icons/arrow-right.png" alt="Arrow to">
                                 </a>
                             </div>
                         </div>

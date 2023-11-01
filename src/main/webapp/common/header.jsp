@@ -16,7 +16,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 </div>
 
 <a href="#top" class="go-top">
-    <img src="assets/imgs/arrow-up.png" alt="">
+    <img src="assets/images/arrow-up.png" alt="">
 </a>
 
 <header class="header">
@@ -35,7 +35,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                                 <ul class="nav-submenu-column">
                                     <!-- <li class="nav-submenu-column-title"><a href="">Ão</a></li> -->
                                     <div class="nav-submenu-column-title">
-                                        <a href="shirt-product.html">Ão</a>
+                                        <a href="shirt-product.html">Áo</a>
                                     </div>
                                     <li><a href="">Hàng mới về</a></li>
                                     <li><a href="">Áo khoác</a></li>
@@ -82,13 +82,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
     <div class="header__icon-list">
         <a href="" class="icon-item"><i class="icon-Search"></i></a>
         <a href="" class="icon-item"><i class="icon-Shopping-Bag"></i></a>
-        <a href="" class="icon-item-active">
-            <i class="icon-User"></i>
-            <div class="div-small-menu">
-                <p>Đăng ký</p>
-                <p>Đăng nhập</p>
-            </div>
-        </a>
+        <a href="" class="icon-item"><i class="icon-User"></i></a>
     </div>
 </header>
 
