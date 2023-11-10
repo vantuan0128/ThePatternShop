@@ -37,7 +37,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                                     <div class="nav-submenu-column-title">
                                         <a href="shirt-product.html">Áo</a>
                                     </div>
-                                    <li><a href="">Hàng mới về</a></li>
+                                    <li><a href="">Hàng mới về</a></li>
                                     <li><a href="">Áo khoác</a></li>
                                     <li><a href="">Áo sơ mi</a></li>
                                     <li><a href="">Áo phông và Polo</a></li>
@@ -50,7 +50,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                                     <div class="nav-submenu-column-title">
                                         <a href="">Quần</a>
                                     </div>
-                                    <li><a href="">Hàng mới về</a></li>
+                                    <li><a href="">Hàng mới về</a></li>
                                     <li><a href="">Quần short</a></li>
                                     <li><a href="">Quần dài</a></li>
                                     <li><a href="">Quần ngắn</a></li>
