@@ -4,11 +4,22 @@
  */
 
 // next banner
-var counter = 1;
+const counter = 1;
 setInterval(function(){
     document.getElementById('radio' + counter).checked = true;
     counter++;
     if(counter > 4){
         counter = 1;
     }
-}, 6000);
+}, 4000);
+
+
+// overlay hidden
+const product = document.querySelector(".navbar-item-active .hidden-item-active");
+product.addEventListener("mouseenter",function(){
+    document.querySelector(".overlay").classList.remove("hidden");
+});
+
+product.addEventListener("mouseleave",function(){
+    document.querySelector(".overlay").classList.add("hidden");
+});

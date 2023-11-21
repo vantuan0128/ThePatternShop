@@ -16,14 +16,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 </div>
 
 <a href="#top" class="go-top">
-    <img src="assets/images/arrow-up.png" alt="">
+    <img src="assets/images/icons/arrow-up.png" alt="">
 </a>
 
 <header class="header">
     <a href="" class="header__logo-shop"> <img src="assets/images/logo/logo.png" alt="logo"></a>
     <div class="header__navbar">
         <ul class="header__navbar-list">
-            <li class="navbar-item"><a href="index.html"><span>Trang chủ</span></a></li>
+            <li class="navbar-item"><a href="index.jsp"><span>Trang chủ</span></a></li>
             <li class="navbar-item-active">
                 <div class="hidden-item-active">
                     <a href="">
@@ -75,7 +75,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
             </li>
             <li class="navbar-item"><a href=""><span>Bộ sưu tập</span></a></li>
-            <li class="navbar-item"><a href=""><span>Về chúng tôi</span></a></li>
+            <li class="navbar-item"><a href="aboutus.jsp"><span>Về chúng tôi</span></a></li>
         </ul>
     </div>
 
