@@ -25,7 +25,6 @@
         <script type="text/javascript"
             src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
         <%@include file="/common/header.jsp" %>
-
         <div class="overlay hidden"></div>
 
         <a href="#top" class="go-top">
@@ -107,13 +106,14 @@
                         </div>
                         <div class="card-category">
                             <div class="card-category-infor">
-                                <p style="    font-weight: 400;
-                        font-size: 20px;
-                        line-height: 26px;">Basci Rangalan Sweater</p>
-                                <p style="    margin-top: 8px;
-                        font-weight: 700;
-                        font-size: 22px;
-                        line-height: 22px;">280.000 VNĐ</p>
+                                <p style="font-weight: 400;
+                                            font-size: 20px;
+                                            line-height: 26px;">
+                                            Basci Rangalan Sweater</p>
+                                <p style="margin-top: 8px;
+                                        font-weight: 700;
+                                        font-size: 22px;
+                                        line-height: 22px;">280.000 VNĐ</p>
                             </div>
                             <div class="card-category-color">
                                 <img src="assets/images/products/newArrivals/Frame 12.png" alt="">
@@ -122,144 +122,7 @@
                     </div>
 
 
-                    <div class="card">
-                        <div class="card-container">
-                            <div class="image-content">
-                                <a href="product-details.jsp">
-                                    <img src="assets/images/products/newArrivals/Fr1_01.png" alt="Front"
-                                        class="image-content-front">
-                                    <!-- <img src="assets/images/products/newArrivals/Fr1_02.png" alt="Back"
-                                        class="image-content-back"> -->
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card-category">
-                            <div class="card-category-infor">
-                                <p style="    font-weight: 400;
-                        font-size: 20px;
-                        line-height: 26px;">Basci Rangalan Sweater</p>
-                                <p style="    margin-top: 8px;
-                        font-weight: 700;
-                        font-size: 22px;
-                        line-height: 22px;">280.000 VNĐ</p>
-                            </div>
-                            <div class="card-category-color">
-                                <img src="assets/images/products/newArrivals/Frame 12.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="card">
-                        <div class="card-container">
-                            <div class="image-content">
-                                <a href="product-details.jsp">
-                                    <img src="assets/images/products/newArrivals/Fr1_01.png" alt="Front"
-                                        class="image-content-front">
-                                    <!-- <img src="assets/images/products/newArrivals/Fr1_02.png" alt="Back"
-                                        class="image-content-back"> -->
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card-category">
-                            <div class="card-category-infor">
-                                <p style="    font-weight: 400;
-                        font-size: 20px;
-                        line-height: 26px;">Basci Rangalan Sweater</p>
-                                <p style="    margin-top: 8px;
-                        font-weight: 700;
-                        font-size: 22px;
-                        line-height: 22px;">280.000 VNĐ</p>
-                            </div>
-                            <div class="card-category-color">
-                                <img src="assets/images/products/newArrivals/Frame 12.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="card">
-                        <div class="card-container">
-                            <div class="image-content">
-                                <a href="product-details.jsp">
-                                    <img src="assets/images/products/newArrivals/Fr1_01.png" alt="Front"
-                                        class="image-content-front">
-                                    <!-- <img src="assets/images/products/newArrivals/Fr1_02.png" alt="Back"
-                                        class="image-content-back"> -->
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card-category">
-                            <div class="card-category-infor">
-                                <p style="    font-weight: 400;
-                        font-size: 20px;
-                        line-height: 26px;">Basci Rangalan Sweater</p>
-                                <p style="    margin-top: 8px;
-                        font-weight: 700;
-                        font-size: 22px;
-                        line-height: 22px;">280.000 VNĐ</p>
-                            </div>
-                            <div class="card-category-color">
-                                <img src="assets/images/products/newArrivals/Frame 12.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="card">
-                        <div class="card-container">
-                            <div class="image-content">
-                                <a href="product-details.jsp">
-                                    <img src="assets/images/products/newArrivals/Fr1_01.png" alt="Front"
-                                        class="image-content-front">
-                                    <!-- <img src="assets/images/products/newArrivals/Fr1_02.png" alt="Back"
-                                        class="image-content-back"> -->
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card-category">
-                            <div class="card-category-infor">
-                                <p style="    font-weight: 400;
-                        font-size: 20px;
-                        line-height: 26px;">Basci Rangalan Sweater</p>
-                                <p style="    margin-top: 8px;
-                        font-weight: 700;
-                        font-size: 22px;
-                        line-height: 22px;">280.000 VNĐ</p>
-                            </div>
-                            <div class="card-category-color">
-                                <img src="assets/images/products/newArrivals/Frame 12.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="card">
-                        <div class="card-container">
-                            <div class="image-content">
-                                <a href="product-details.jsp">
-                                    <img src="assets/images/products/newArrivals/Fr1_01.png" alt="Front"
-                                        class="image-content-front">
-                                    <!-- <img src="assets/images/products/newArrivals/Fr1_02.png" alt="Back"
-                                        class="image-content-back"> -->
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card-category">
-                            <div class="card-category-infor">
-                                <p style="    font-weight: 400;
-                        font-size: 20px;
-                        line-height: 26px;">Basci Rangalan Sweater</p>
-                                <p style="    margin-top: 8px;
-                        font-weight: 700;
-                        font-size: 22px;
-                        line-height: 22px;">280.000 VNĐ</p>
-                            </div>
-                            <div class="card-category-color">
-                                <img src="assets/images/products/newArrivals/Frame 12.png" alt="">
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
 

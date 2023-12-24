@@ -35,9 +35,12 @@
                 <h1>TẠO TÀI KHOẢN</h1>
                 <form action="register" id="registerForm">
                     <h3>Đăng ký tài khoản để trở thành <span>P-Mem</span> để được nhận ưu đãi nhé!!!</p>
-
+                        
                         <div class="input-box">
-                            <input type="text" placeholder="Email hoặc số điện thoại *" name="Username" required="required">
+                            <input type="text" placeholder="Username *" name="Username" required="required">
+                        </div>
+                        <div class="input-box">
+                            <input type="text" placeholder="Email hoặc số điện thoại *" name="Email" required="required">
                         </div>
 
                         <div class="input-box">

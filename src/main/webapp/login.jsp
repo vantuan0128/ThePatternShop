@@ -37,7 +37,7 @@
                     <h3>Chào mừng bạn quay trở lại, khám phá ưu đãi mới nhất nhé!</p>
 
                         <div class="input-box">
-                            <input type="text" placeholder="Email hoặc Số điện thoại *" name="Username" required="required">
+                            <input type="text" placeholder="Username *" name="Username" required="required">
                         </div>
 
                         <div class="input-box">

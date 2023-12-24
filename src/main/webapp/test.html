@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* CSS styling */
+        .detail__content-color {
+            text-align: center;
+        }
+
+        .detail__content-color p {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .detail__content-color div img {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            border-radius: 5px;
+            transition: border 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        .selected {
+            border-color: black;
+            transform: scale(1.2); /* Kích thước ảnh được chọn */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="detail__content-color">
+        <p>MÀU SẮC</p>
+        <div>
+            <img src="assets/images/icons/colors/Color_01.png" alt="" onclick="selectColor(this)" class="selected">
+            <img src="assets/images/icons/colors/Color_02.png" alt="" onclick="selectColor(this)">
+            <img src="assets/images/icons/colors/Color_03.png" alt="" onclick="selectColor(this)">
+        </div>
+    </div>
+
+    <script>
+        // JavaScript function to handle color selection
+        function selectColor(element) {
+            // Remove 'selected' class from all images
+            let colorImages = document.querySelectorAll('.detail__content-color img');
+            colorImages.forEach(img => {
+                img.classList.remove('selected');
+                img.style.transform = 'scale(1)'; // Reset kích thước ảnh
+            });
+            element.classList.add('selected');
+        }
+    </script>
+
+</body>
+</html>

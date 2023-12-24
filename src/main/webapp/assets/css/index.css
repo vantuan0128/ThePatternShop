@@ -208,7 +208,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     justify-content: space-between;
 }
 
-.image-content-back{
+/* .image-content-back{
     display: none;
 }
 
@@ -227,7 +227,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     100%{
         opacity: 1;
     }
-}
+} */
 
 
 .button-watch-more{
