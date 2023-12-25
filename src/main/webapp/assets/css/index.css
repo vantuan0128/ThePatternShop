@@ -143,6 +143,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     width: 100%;
 }
 
+
+/* hide button */
 .slide-container{
     display: flex;
     align-items: center;
@@ -159,17 +161,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     /* grid-template-columns: repeat(3, 1fr);
     grid-gap: 40px;
     align-items: center; */
+    display: flex;
 }
 
 /* hide button */
-.slick-prev, .slick-next {
+.slick-prev, .slick-next{
     position: absolute;
     display: none;
     top: 50%;
     left: 50%;
-    z-index: -20;
+    z-index: -10;
 }
-
 
 .card{
     width: 379px;
@@ -201,14 +203,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     animation: fade 0.6s;
 }
 
-.card-category{
-    width: 379px;
-    display: flex;
-    margin-top: 24px;
-    justify-content: space-between;
-}
-
-/* .image-content-back{
+.image-content-back{
     display: none;
 }
 
@@ -227,8 +222,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     100%{
         opacity: 1;
     }
-} */
+}
 
+.card-category{
+    width: 379px;
+    margin-top: 24px;
+    justify-content: space-between;
+    align-items: flex-start;
+}
 
 .button-watch-more{
     display: flex;

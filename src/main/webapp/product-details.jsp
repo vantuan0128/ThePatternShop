@@ -36,7 +36,7 @@
                     <div class="product__detail-control">
                         <ul class="detail__control-list">
                             <li>
-                                <a href="#">TRANG CHỦ</a>
+                                <a href="index.jsp">TRANG CHỦ</a>
                             </li>
                             <li>
                                 <a href="#">SẢN PHẨM</a>

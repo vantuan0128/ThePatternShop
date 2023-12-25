@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,500;0,700;0,900;1,400&display=swap');
+:root{
+    --font: 'Neurial Grotesk', sans-serif;
+    --text-color: #1A1D1F;
+    --bgr-color-one: #FCFCFC;
+    --bgr-color-two: #F4F4F4;
+}
+*{
+    box-sizing: border-box;
+}
+body{
+    font-family: var(--font);
+    color: var(--text-color);
+    background-color: var(--bgr-color-two);
+}
+
+a{
+    text-decoration: none;
+}
+.container{
+    display: flex;
+}
+h3{
+    margin: 0;
+}

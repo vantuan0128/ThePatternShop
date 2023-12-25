@@ -9,75 +9,69 @@ package entity;
  * @author admin
  */
 public class Product {
-    private String idPro, namePro, descriptionPro, typePro;
-    private long price, perchase_price;
-    private String imageFileName;
+    private String id, name, image, description;
+    private int cost;
+    private boolean isActive;
 
-    public Product(String idPro, String namePro, String descriptionPro, String typePro, long price, long perchase_price, String imageFileName) {
-        this.idPro = idPro;
-        this.namePro = namePro;
-        this.descriptionPro = descriptionPro;
-        this.typePro = typePro;
-        this.price = price;
-        this.perchase_price = perchase_price;
-        this.imageFileName = imageFileName;
+    public Product(String id, String name, String image, String description, int cost, boolean isActive) {
+        this.id = id;
+        this.name = name;
+        this.image = image;
+        this.description = description;
+        this.cost = cost;
+        this.isActive = isActive;
     }
 
-    public String getIdPro() {
-        return idPro;
+    public String getId() {
+        return id;
     }
 
-    public String getNamePro() {
-        return namePro;
+    public String getName() {
+        return name;
     }
 
-    public String getDescriptionPro() {
-        return descriptionPro;
+    public String getImage() {
+        return image;
     }
 
-    public String getTypePro() {
-        return typePro;
+    public String getDescription() {
+        return description;
     }
 
-    public long getPrice() {
-        return price;
+    public int getCost() {
+        return cost;
     }
 
-    public long getPerchase_price() {
-        return perchase_price;
+    public boolean isIsActive() {
+        return isActive;
     }
 
-    public String getImageFileName() {
-        return imageFileName;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setIdPro(String idPro) {
-        this.idPro = idPro;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setNamePro(String namePro) {
-        this.namePro = namePro;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public void setDescriptionPro(String descriptionPro) {
-        this.descriptionPro = descriptionPro;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public void setTypePro(String typePro) {
-        this.typePro = typePro;
+    public void setCost(int cost) {
+        this.cost = cost;
     }
 
-    public void setPrice(long price) {
-        this.price = price;
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
     }
 
-    public void setPerchase_price(long perchase_price) {
-        this.perchase_price = perchase_price;
+    @Override
+    public String toString() {
+        return "Product{" + "id=" + id + ", name=" + name + ", image=" + image + ", description=" + description + ", cost=" + cost + ", isActive=" + isActive + '}';
     }
-
-    public void setImageFileName(String imageFileName) {
-        this.imageFileName = imageFileName;
-    }
-    
-    
 }

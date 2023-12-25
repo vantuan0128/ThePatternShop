@@ -1,0 +1,95 @@
+.content{
+    padding: 0;
+    display: flex;
+}
+ img{
+    width: 100%;
+    margin-bottom: 20px;
+}
+.title div{
+    width: 15px;
+    height: 25px;
+    background-color: #141414;
+    margin-right: 15px;
+}
+.title{
+    display: flex;
+    align-items: center;
+}
+.title h2{
+    font-size: 20px;
+}
+/* preview */
+.preview{
+    height: 45%;
+}
+.preview:last-child{
+    margin-top: 20px
+}
+.preview-title{
+    margin-top: 15px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #EFEFEF;
+}
+.preview-title span{
+    color: #6F767E;
+    font-size: 14px;
+}
+.preview-product{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+.preview-product .preview-left{
+    width: 80%;
+    display: flex;
+    align-items: center;
+}
+.preview-product img{
+    height: 65px;
+    width: 65px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 0 10px 0 0;
+}
+.preview-product .preview-right{
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+}
+.preview-product .preview-right span:last-child{
+    background-color: #EAFAE5;
+    color: #83BF6E;
+    padding: 2px 10px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    height: 25px;
+}
+.all-product{
+    color: #141414;
+    border: 3px solid #141414;
+    width: 100%;
+    padding: 10px 0;
+}
+/* Refund */
+
+.preview:last-child{
+    height: 25%;
+}
+.preview:last-child .inner-preview .preview-content{
+    display: flex;
+    margin-bottom: 20px;
+}
+.preview:last-child i{
+    font-size: 24px;
+}
+.preview:last-child .preview-content div:first-child{
+    display: flex;
+    align-items: center;
+    margin-right: 20px
+}
+.preview:last-child .preview-content div i{
+    margin: auto;
+}
