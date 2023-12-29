@@ -20,17 +20,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 </a>
 
 <header class="header">
-    <a href="index.jsp" class="header__logo-shop"> <img src="assets/images/logo/logo.png" alt="logo"></a>
+    <a href="/ThePatternShop" class="header__logo-shop"> <img src="assets/images/logo/logo.png" alt="logo"></a>
     <div class="header__navbar">
-        <ul class="header__navbar-list">
-            <li class="navbar-item"><a href="index.jsp"><span>Trang chủ</span></a></li>
-            <li class="navbar-item-active">
+        <ul class="header__navbar-list" id="header__navbar-list">
+            <li id="home" class="navbar-item"><a href="/ThePatternShop"><span>Trang chủ</span></a></li>
+            <li id="products" class="navbar-item-active">
                 <div class="hidden-item-active">
                     <a href="">
                         <span>Sản phẩm</span>
                     </a>
                     <div class="submenu">
-                        <ul class="nav-submenu">
+                        <ul class="nav-submenu" id="nav-submenu">
                             <li>
                                 <ul class="nav-submenu-column">
                                     <!-- <li class="nav-submenu-column-title"><a href="">Ão</a></li> -->
@@ -74,8 +74,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                 </div>
 
             </li>
-            <li class="navbar-item"><a href=""><span>Bộ sưu tập</span></a></li>
-            <li class="navbar-item"><a href="aboutus.jsp"><span>Về chúng tôi</span></a></li>
+            <li id="collections" class="navbar-item"><a href=""><span>Bộ sưu tập</span></a></li>
+            <li id="aboutus" class="navbar-item"><a href="aboutus.jsp"><span>Về chúng tôi</span></a></li>
         </ul>
     </div>
 
@@ -86,3 +86,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
     </div>
 </header>
 
+<!-- <script>
+    var currentPage = "home";
+    document.getElementById(currentPage).classList.add("navbar-item-active");
+    console.log(currentPage);
+</script> -->

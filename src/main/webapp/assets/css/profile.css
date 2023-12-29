@@ -1,0 +1,199 @@
+#profile {
+    width: 100%;
+    padding: 0px 112px;
+}
+
+.profile__detail {
+    width: 100%;
+}
+
+.profile__detail-control {
+    width: 100%;
+    padding-bottom: 32px;
+    border-bottom: 1px solid #8C8C8C;
+    margin-bottom: 64px;
+}
+
+.profile__detail-control .detail__control-list {
+    display: flex;
+    align-items: center;
+}
+
+.profile__detail-control .detail__control-list li {
+    padding: 0px 24px;
+}
+
+.profile__detail-control .detail__control-list li:nth-child(1) {
+    border-right: 2px solid #8C8C8C;
+}
+
+.profile__detail-control .detail__control-list a {
+    font-size: 20px;
+    color: #8C8C8C;
+    font-weight: 500;
+}
+
+.content {
+    display: flex;
+    padding-top: 50px;
+    justify-content: space-between;
+}
+
+.star {
+    color: var(--base-color);
+}
+
+.selection-list {
+    width: 40%;
+}
+
+.welcome {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+}
+
+.welcome img {
+    width: 274px;
+    margin-bottom: 20px;
+}
+
+.welcome span {
+    font-size: 20px;
+}
+
+
+.infor-list ul {
+    padding: 0;
+    margin: 0;
+
+}
+
+.infor-list ul li {
+    margin: 15px 0;
+}
+
+.infor-list ul li a {
+    color: var(--text-color-2);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: normal;
+
+}
+
+/* inner account */
+.inner-account {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.order {
+    border: 1px solid var(--text-color-2);
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin: 100px 0;
+}
+
+.profile,
+.change-password {
+    border: 1px solid var(--text-color-2);
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin-right: 200px;
+}
+
+.inner-account div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.inner-account div input {
+    margin-top: 15px;
+    padding: 10px;
+}
+.inner-account div label{
+    font-size: 18px;
+}
+
+.inner-account div:nth-child(4) {
+    margin: 0;
+}
+
+.inner-account div:nth-child(4) label {
+    margin-bottom: 15px;
+}
+
+.inner-account div:nth-child(4) select {
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.inner-account div:nth-child(4) select:last-child {
+    margin: 0;
+}
+
+.profile [type=submit],
+.change-password [type=submit] {
+    background-color: var(--text-color-2);
+    color: var(--text-color);
+    border: none;
+    padding: 15px 25px;
+    width: 170px;
+    margin-top: 30px;
+}
+
+.profile [type=submit]:hover,
+.change-password [type=submit]:hover {
+    cursor: pointer;
+}
+
+/* Quan ly don hang */
+.order {
+    margin: 100px 0;
+    border: 1px solid var(--text-color-2);
+    padding: 20px 30px;
+    width: 800px;
+}
+
+
+.order table thead tr th,
+table tbody tr td {
+    padding-bottom: 20px;
+    padding-right: 80px;
+    font-size: 16px;
+    font-weight: 500;
+}
+.order table thead tr th {
+    text-align: left;
+    font-weight: 600;
+}
+
+.order table tbody tr td:last-child {
+    color: #00A82F;
+}
+
+/* INNER LOGO */
+.inner-logo {
+    background-color: #F7F7F7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #BFBFBF;
+    height: 415px;
+    padding-top: 80px;
+}
+
+.inner-logo img {
+    width: 380px;
+}
+
+.inner-logo span {
+    margin-top: 20px;
+    font-weight: 600;
+}

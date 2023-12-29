@@ -1,12 +1,13 @@
 <%-- Document : product-details Created on : Nov 19, 2023, 10:19:43 AM Author : admin --%>
 
+<%@page import="entity.Product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Product Detail</title>
+        <title>Chi tiết sản phẩm</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
         <link rel="stylesheet" href="assets/css/font.css" />
@@ -24,6 +25,8 @@
         <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
         <script type="text/javascript"
             src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+        
+        
         <%@include file="/common/header.jsp" %>
         <div class="overlay hidden"></div>
 
@@ -36,7 +39,7 @@
                     <div class="product__detail-control">
                         <ul class="detail__control-list">
                             <li>
-                                <a href="index.jsp">TRANG CHỦ</a>
+                                <a href="/ThePatternShop">TRANG CHỦ</a>
                             </li>
                             <li>
                                 <a href="#">SẢN PHẨM</a>
@@ -49,6 +52,9 @@
                             </li>
                         </ul>
                     </div>
+                    <% 
+                        Product product = (Product)request.getAttribute("product");
+                    %>
                     <div class="product__detail-container">
                         <div class="detail__img">
                             <!-- <div class="detail__img-coll">
@@ -57,21 +63,21 @@
                                 <img src="./imgs/product-details/4.png" alt="">
                             </div> -->
                             <div class="detail__img-colr">
-                                <img src="assets/images/products/newArrivals/Fr1_01.png" alt="" style="width: 100%;">
+                                <img src="assets/images/products/newArrivals/<%=product.getImage()%>" alt="" style="width: 100%;">
                             </div>
                         </div>
 
                         <div class="detail__container">
                             <div class="detail__content">
                                 <div class="detail__content-title">
-                                    <p class="detail__content-head">Corduroy Bomber</p>
-                                    <p class="detail__content-code">Mã sản phẩm: CB123</p>
+                                    <p class="detail__content-head"><%= product.getName() %></p>
+                                    <p class="detail__content-code">Mã sản phẩm: <%= product.getId() %></p>
                                     <p class="detail__content-status">
                                         Tình trạng: <span>CÒN HÀNG</span>
                                     </p>
                                 </div>
 
-                                <p class="detail__content-price">349.000 VNĐ</p>
+                                <p class="detail__content-price"><%= product.getCost() %> VND</p>
 
                                 <div class="detail__content-quantity">
                                     <p>SỐ LƯỢNG</p>
@@ -130,13 +136,8 @@
                             <img src="assets/images/icons/Arrow-down.svg" alt="" class="des__item-icon" id="count1" onclick="toggleContent(this)">
                         </div>
                         <p id="des__item-content1" class="product__des-list hidden-content">
-                            - Sản phẩm Áo nỉ chui đầu Corduroy Bomber CB123 chính là mẫu
-                            thiết kế mới nhất
-                            cho mùa đông này
-                            <br>
-                            - Chất liệu nỉ chân cua Hàn Quốc mềm mịn, dày dặn
-                            <br>
-                            - Đem lại sự thoải mái tiện lợi nhất cho người mặc</p>
+                            <%= product.getDescription() %>
+                            </p>
                     </div>
                     <div class="product__des-item">
                         <div class="des__item-content">
@@ -144,9 +145,11 @@
                             <img src="assets/images/icons/Arrow-down.svg" alt="" class="des__item-icon" id="count2" onclick="toggleContent(this)">
                         </div>
                         <p id="des__item-content2" class="product__des-list hidden-content">
-                            - Sản phẩm Áo nỉ chui đầu Corduroy Bomber CB123 chính là mẫu
-                            thiết kế mới nhất
-                            cho mùa đông này
+                            - mày có những size gì?
+                            <br>
+                            - mày có những màu gì ?
+                            <br>
+                            - số lượng còn lại bao nhiêu ?
                         </p>
                     </div>
 
@@ -294,6 +297,7 @@
             }
         </script>
         <script src="assets/js/backtotop.js"></script>
+        <script src="assets/js/overlay-hidden.js"></script>
     </body>
 
 </html>

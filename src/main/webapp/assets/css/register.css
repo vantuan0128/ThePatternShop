@@ -7,41 +7,37 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Author     : admin
 */
 
-@import url(basecf.css);
+/* @import url(basecf.css); */
 
-.pos-user-at {
-    margin-top: 20px;
-    display: block;
-    margin-bottom: 36px;
+.control{
+    width: 100%;
+    padding: 0px 112px;
+}
+.register-control{
+    width: 100%;
+    padding-bottom: 32px;
+    border-bottom: 1px solid #8C8C8C;
+    margin-bottom: 64px;
 }
 
-.pos-user-at__title {
-    width: 453px;
-    margin-left: 145px;
+.register-control .register-control-list{
     display: flex;
-    justify-content: space-between;
     align-items: center;
 }
+.register-control .register-control-list li {
+    padding: 0px 24px;
+}
+.register-control .register-control-list li:nth-child(1),
+.register-control .register-control-list li:nth-child(2){
+    border-right: 2px solid #8C8C8C;
+}
 
-.homepage,
-.product,
-.sale,
-.space {
-    font-weight: 400;
+.register-control .register-control-list a {
     font-size: 20px;
-    line-height: 20px;
-    text-transform: uppercase;
     color: #8C8C8C;
+    font-weight: 500;
 }
 
-.space {
-    font-size: 26px;
-}
-
-.sale {
-    font-weight: 700;
-    color: black;
-}
 
 .container {
     width: 1440px;

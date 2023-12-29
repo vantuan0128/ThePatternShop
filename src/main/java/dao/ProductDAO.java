@@ -29,7 +29,7 @@ public class ProductDAO {
     
     private static final String INSERT_PRODUCT = "insert into " + tableName + " (Id, Name, Image, Description, Cost, IsActive) VALUES " +
         " (?, ?, ?, ?, ?, ?);";
-    private static final String SELECT_PRODUCT_BY_ID = "select Id, Name, Image, Description, Cost, IsActive from " + tableName + " where Id =?";
+    private static final String SELECT_PRODUCT_BY_ID = "select * from " + tableName + " where Id = ?;";
     private static final String SELECT_ALL_PRODUCT = "select * from " + tableName + ";";
     private static final String DELETE_PRODUCT_MYSQL = "delete from " + tableName + " where Id = ?;";
     private static final String UPDATE_PRODUCT_MYSQL = "update " + tableName + " set Name = ?, Image= ?, Description = ?, Cost = ?, IsActive = ? where Id = ?;";
@@ -94,17 +94,20 @@ public class ProductDAO {
     }
     
     public boolean deleteProduct(String id) throws SQLException {
-        boolean rowDeleted;
+        boolean rowDeleted = false;
         try (Connection connection = dbContext.getConnection(); 
             PreparedStatement statement = connection.prepareStatement(DELETE_PRODUCT_MYSQL);) {
             statement.setString(1, id);
             rowDeleted = statement.executeUpdate() > 0;
         }
+        catch (SQLException e) {
+            printSQLException(e);
+        }
         return rowDeleted;
     }
     
     public boolean updateProduct(Product product) throws SQLException {
-        boolean rowUpdated;
+        boolean rowUpdated = false;
         try (Connection connection = dbContext.getConnection(); 
             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_PRODUCT_MYSQL);) {
             preparedStatement.setString(1, product.getName());
@@ -113,6 +116,9 @@ public class ProductDAO {
             preparedStatement.setInt(4, product.getCost());
             preparedStatement.setBoolean(5, product.isIsActive());
             rowUpdated = preparedStatement.executeUpdate() > 0;
+        }
+        catch (SQLException e) {
+            printSQLException(e);
         }
         return rowUpdated;
     }

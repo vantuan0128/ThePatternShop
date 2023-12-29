@@ -1,314 +1,171 @@
-
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
+
+<!-- <!DOCTYPE html>
 <html>
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Quản lý sản phẩm</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<!-- <link rel="stylesheet" href="../assets/fontss/fontawesome-free-6.5.1-web/css/all.min.css"> -->
-	<link rel="stylesheet" href="../assets/css/admin/reset.css">
-	<link rel="stylesheet" href="../assets/css/admin/base.css">
-	<link rel="stylesheet" href="../assets/css/admin/style.css">
-	<link rel="stylesheet" href="../assets/css/admin/productStyle.css">
-	<link rel="stylesheet" href="../assets/css/admin/addProductStyle.css">
-	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-	<script>
-		$(document).ready(function () {
-			// Đặt sự kiện click cho nút dropdown
-			$(".dropdown").click(function () {
-				// Ẩn hoặc hiển thị submenu tương ứng
-				$(this).parent().find(".sub-menu").toggle();
-			});
-		});
-		function handleImageSelection() {
-			const imageInput = document.getElementById('imageInput');
-
-			// Kiểm tra xem người dùng đã chọn ít nhất một tệp tin hay không
-			if (imageInput.files.length > 0) {
-				const selectedImages = Array.from(imageInput.files);
-
-				// Xử lý các tệp tin đã chọn ở đây (ví dụ: hiển thị thông tin về mỗi tệp)
-				selectedImages.forEach((file, index) => {
-					console.log(`Image ${index + 1}: ${file.name}`);
-				});
-			} else {
-				alert('Vui lòng chọn ít nhất một ảnh.');
-			}
-		}
-	</script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="assets/css/product.css">
+    <link rel="stylesheet" href="assets/css/addProduct.css">
 </head>
 
-<body>
-	<div class="container">
-		<!-- Sidebar -->
-		<div class="sidebar">
-			<div class="inner-sidebar">
-				<div class="sidebar-title">
-					<a href="dashboard.jsp"><img src="../assets/images/admin/logo.jpg" alt="logo"></a>
-					<span>Xin chào, <strong>Admin</strong></span>
-				</div>
-				<div class="nav-stack">
-					<div class="nav-item">
-						<a href="">
-							<i class="fa-solid fa-house"></i>
-							<span>Tổng quan</span>
-						</a>
-					</div>
-					<div class="nav-item">
-						<div class="nav-item-top">
-							<div class="nav-item-left">
-								<a href="" class="sub-btn">
-									<i class="fa-solid fa-bag-shopping"></i>
-									<span>Sản phẩm</span>
-									<a href=""><i class="fa-solid fa-circle-plus circle-plus"></i></a>
-									<i class="dropdown fa-solid fa-chevron-down"></i></a>
-								<div class="sub-menu">
-									<div class="hidden-menu">
-										<a href="" class="sub-item">Tổng quan</a>
-										<a href="productManagement.jsp" class="sub-item">Quản lý sản phẩm</a>
-										<a href="addProduct.jsp" class="sub-item">Thêm sản phẩm</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+<body> -->
+    <div class="wrapper">
+        <div class="top-bar">
+            <div class="left">
+                <div class="search">
+                    <button class="btn icon-search"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <input type="text" class="input-search" placeholder="Search or type a command">
+                </div>
+            </div>
+            <div class="right">
+                <button class="btn btn-create">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>Create</span>
+                </button>
+                <i class="icon-top-nav fa-solid fa-message"></i>
+                <i class="icon-top-nav fa-regular fa-bell"></i>
+                <img src="./assets/images/team3.jpg" alt="">
+            </div>
+        </div>
 
-					<div class="nav-item">
-						<div class="nav-item-top">
-							<div class="nav-item-left">
-								<a href="" class="sub-btn">
-									<i class="fa-solid fa-user"></i>
-									<span>Khách hàng</span>
-									<!-- <a href=""><i class="fa-solid fa-circle-plus circle-plus"></i></a> -->
-								</a>
-								<i class="dropdown fa-solid fa-chevron-down"></i>
-								<div class="sub-menu">
-									<div class="hidden-menu">
-										<a href="" class="sub-item">Tổng quan</a>
-										<a href="customerManagement.jsp" class="sub-item">Danh sách khách hàng</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="nav-item">
-						<a href="">
-							<i class="fa-solid fa-shop"></i>
-							<span>Shop</span>
-						</a>
-					</div>
-					<div class="nav-item">
-						<div class="nav-item-top">
-							<a href="">
-								<i class="fa-solid fa-chart-simple"></i>
-								<span>Doanh Thu</span>
-							</a>
-							<span class="show-item"><i class="dropdown fa-solid fa-chevron-down"></i></span>
-						</div>
-					</div>
-					<div class="nav-item">
-						<a href="">
-							<i class="fa-solid fa-gear"></i>
-							<span>Quảng cáo</span>
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
+        <div class="content">
+            <div class="content-box">
+                <div class="inner-content">
+                    <h1>Thêm sản phẩm mới</h1>
+                    <div class="product-infor">
+                        <h3>Tên và Mô tả sản phẩm</h3>
+                        <form action="AddProduct" method="POST" enctype="multipart/form-data">
+                            <label class="product-infor__title"><strong>Tiêu đề sản phẩm</strong></label>
+                            <input type="text" class="box-title" name="Name">
+                            <label class="product-infor__title" for=""><strong>Mô tả sản phẩm</strong></label>
+                            <div class="text-box">
+                                <div class="box-top">
+                                    <div class="top-left">
+                                        <i class="fa-solid fa-bold"></i>
+                                        <i class="fa-solid fa-italic"></i>
+                                        <i class="fa-solid fa-underline"></i>
+                                        <i class="fa-regular fa-face-smile"></i>
+                                        <i class="fa-solid fa-link"></i>
+                                        <i class="fa-solid fa-align-justify"></i>
+                                        <i class="fa-solid fa-align-center"></i>
+                                    </div>
+                                    <div class="top-right">
+                                        <i class="fa-solid fa-arrow-left"></i>
+                                        <i class="fa-solid fa-arrow-right"></i>
+                                    </div>
+                                </div>
+                                <textarea name="Description" id="" cols="30" rows="10"></textarea>
+                            </div>
+                            <h3>Hình ảnh</h3>
+                            <div class="product-images">
+                                <input type="file" name="imageInput" id="imageInput" accept="image/*" multiple >                                 
+                            </div>
+                            <h3>Thuộc tính</h3>
+                            <div class="product__size-color">
+                                <div class="product__select-category" id="select-size">
+                                    <label for="size"><b>Kích thước</b></label>
+                                    <div class="product__checkbox-group">
+                                        <input type="checkbox" id="SCheckbox" class="checkbox" data-category="size">
+                                        <label for="SCheckbox">S</label>
+                                    </div>
+                                    <div class="product__checkbox-group">
+                                        <input type="checkbox" id="MCheckbox" class="checkbox" data-category="size">
+                                        <label for="MCheckbox">M</label>
+                                    </div>
+                                    <div class="product__checkbox-group">
+                                        <!-- <input type="checkbox" id="size3" name="size" value="L"> -->
+                                        <input type="checkbox" id="LCheckbox" class="checkbox" data-category="size">
+                                        <label for="LCheckbox">L</label>
+                                    </div>
+                                    <div class="product__checkbox-group">
+                                        <!-- <input type="checkbox" id="size4" name="size" value="XL"> -->
+                                        <input type="checkbox" id="XLCheckbox" class="checkbox" data-category="size">
+                                        <label for="XLCheckbox">XL</label>
+                                    </div>
+                                    <div class="product__checkbox-group">
+                                        <!-- <input type="checkbox" id="size5" name="size" value="2XL"> -->
+                                        <input type="checkbox" id="2XLCheckbox" class="checkbox" data-category="size">
+                                        <label for="2XLCheckbox">2XL</label>
+                                    </div>
+                                </div>
 
-		<!-- wrapper -->
-		<div class="wrapper">
-			<div class="top-bar">
-				<div class="left">
-					<div class="search">
-						<button class="btn icon-search"><i class="fa-solid fa-magnifying-glass"></i></button>
-						<input type="text" class="input-search" placeholder="Search or type a command">
-					</div>
-				</div>
-				<div class="right">
-					<button class="btn btn-create">
-						<i class="fa-solid fa-plus"></i>
-						<span>Create</span>
-					</button>
-					<i class="icon-top-nav fa-solid fa-message"></i>
-					<i class="icon-top-nav fa-regular fa-bell"></i>
-					<img src="../assets/images/admin/team3.jpg" alt="">
-				</div>
-			</div>
+                                <div class="product__select-category" id="select-color">
+                                    <label for="color"><b>Màu sắc</b></label>
+                                    <div class="product__checkbox-group">
+                                        <input type="checkbox" id="grayCheckbox" class="checkbox" data-category="color">
+                                        <div class="product__checkbox-color color1"></div>
+                                    </div>
+                                    <div class="product__checkbox-group">
+                                        <input type="checkbox" id="brownCheckbox" class="checkbox" data-category="color">
+                                        <div class="product__checkbox-color color2"></div>
+                                    </div>
+                                    <div class="product__checkbox-group">
+                                        <input type="checkbox" id="blackCheckbox" class="checkbox" data-category="color">
+                                        <div class="product__checkbox-color color3"></div>
+                                    </div>
+                                    <div class="product__checkbox-group">
+                                        <input type="checkbox" id="whiteCheckbox" class="checkbox" data-category="color">
+                                        <div class="product__checkbox-color color4"></div>
+                                    </div>
+                                    <div class="product__checkbox-group">
+                                        <input type="checkbox" id="redCheckbox" class="checkbox" data-category="color">
+                                        <div class="product__checkbox-color color5"></div>
+                                    </div>
+                                </div>
+                            </div>
 
-			<div class="content">
-				<div class="content-box">
-					<div class="inner-content">
-						<h1>Thêm sản phẩm mới</h1>
-						<div class="product-infor">
-							<h3>Tên và Mô tả sản phẩm</h3>
-							<form action="">
-								<label for=""><strong>Tiêu đề sản phẩm</strong></label>
-								<input type="text" class="box-title">
-								<label for=""><strong>Mô tả sản phẩm</strong></label>
-								<div class="text-box">
-									<div class="box-top">
-										<div class="top-left">
-											<i class="fa-solid fa-bold"></i>
-											<i class="fa-solid fa-italic"></i>
-											<i class="fa-solid fa-underline"></i>
-											<i class="fa-regular fa-face-smile"></i>
-											<i class="fa-solid fa-link"></i>
-											<i class="fa-solid fa-align-justify"></i>
-											<i class="fa-solid fa-align-center"></i>
-										</div>
-										<div class="top-right">
-											<i class="fa-solid fa-arrow-left"></i>
-											<i class="fa-solid fa-arrow-right"></i>
-										</div>
-									</div>
-									<textarea name="" id="" cols="30" rows="10"></textarea>
-								</div>
-							</form>
-							<div class="product-func">
-								<span><strong>Các tính năng chính</strong></span>
-								<div class="box">
-									<input type="text" placeholder="Giá trị">
-									<input type="text" placeholder="Giá trị">
-									<input type="text" placeholder="Giá trị">
-									<input type="text" placeholder="Giá trị">
-								</div>
-							</div>
-						</div>
+                            <h3>Xác nhận số lượng</h3>
+                            <table class="product__table-result">
+                                <thead>
+                                    <tr>
+                                        <th>Kích thước</th>
+                                        <th>Màu sắc</th>
+                                        <th>Số lượng</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="resultTable">
+                                </tbody>
+                            </table>
 
-						<!-- Hinh anh va CTA -->
-						<div class="product-images">
-							<h3>Hình ảnh và CTA</h3>
-							<span><b>Ảnh bìa</b></span>
-							<div class="choose-img">
-								<input type="file" id="imageInput" accept="image/*" multiple>
-								<!-- <button onclick="handleImageSelection()">Chọn ảnh</button> -->
-							</div>
-							<span><b>Dropdown</b></span>
-							<form action="">
-								<select name="" id=""></select>
-							</form>
-						</div>
-
-						<div class="product-prices">
-							<h3>Giá sản phẩm</h3>
-							<span><b>Đơn giá</b></span>
-							<div class="box-price">
-								<span>VNĐ</span>
-								<input type="text">
-							</div>
-						</div>
-
-						<div class="product-attribute">
-							<h3>Danh mục và thuộc tính</h3>
-							<form action="">
-								<div class="list">
-									<label for="list-attribute">Danh mục</label>
-									<select name="" id="list-attribute">
-										<option value="shirt">T-Shirt</option>
-										<option value="sweater">Sweater</option>
-										<option value="polo">Polo</option>
-										<option value="jacket">Jacket</option>
-										<option value="jogger">Jogger</option>
-									</select>
-								</div>
-								<div class="select-category">
-									<div class="col1">
-										<label for="size"><b>Kích thước</b></label>
-										<div class="box-size">
-											<span><input type="checkbox"><b>S</b></span>
-											<span><input type="checkbox"><b>M</b></span>
-											<span><input type="checkbox"><b>L</b></span>
-											<span><input type="checkbox"><b>XL</b></span>
-											<span><input type="checkbox"><b>2XL</b></span>
-										</div>
-									</div>
-									<div class="col2">
-										<label for="color"><b>Màu sắc</b></label>
-										<div class="box-choose">
-											<span><input type="checkbox">
-												<div class="box-color color1"></div>
-											</span>
-											<span><input type="checkbox">
-												<div class="box-color color2"></div>
-											</span>
-											<span><input type="checkbox">
-												<div class="box-color color3"></div>
-											</span>
-											<span><input type="checkbox">
-												<div class="box-color color4"></div>
-											</span>
-											<span><input type="checkbox">
-												<div class="box-color color5"></div>
-											</span>
-										</div>
-									</div>
-								</div>
-							</form>
-						</div>
-
-						<div class="product-images">
-							<h3>Dữ liệu sản phẩm</h3>
-							<span><b>Content</b></span>
-							<div class="choose-img">
-								<input type="file" id="imageInput" accept="image/*" multiple>
-								<!-- <button onclick="handleImageSelection()">Chọn ảnh</button> -->
-							</div>
-							<span><b>Fonts</b></span>
-							<div class="choose-img">
-								<input type="file" id="imageInput" accept="image/*" multiple>
-								<!-- <button onclick="handleImageSelection()">Chọn ảnh</button> -->
-							</div>
-						</div>
-
-						<div class="prodcut-comment">
-							<h3>Thảo luận</h3>
-							<span><b>Message to reviewer</b></span>
-							<div class="box-text"><textarea name="" id="" cols="30" rows="10"></textarea></div>
-						</div>
-						<!-- Footer -->
-					</div>
-					<div class="preview">
-						<div class="inner-preview">
-							<div class="preview-title">
-								<span><strong>Preview</strong></span>
-								<i class="fa-solid fa-expand"></i>
-							</div>
-							<div class="preview-top">
-								<img src="../assets/images/admin/swt2.jpg" alt="sweater">
-								<div class="sale">
-									<span>SALE OFF</span>
-									<i class="fa-regular fa-heart"></i>
-								</div>
-							</div>
-							<div class="preview-bottom">
-								<div class="bottom-left">
-									<span>Cotton Sweater</span>
-									<span><strong>280.000 VNĐ</strong></span>
-								</div>
-								<div class="bottom-right">
-									<div></div>
-									<div></div>
-									<div></div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<footer class="footer">
-					<div class="save">
-						<button class="btn save--btn">Lưu nháp</button>
-						<button class="btn up--btn">Đăng ngay</button>
-					</div>
-				</footer>
-			</div>
-		</div>
-	</div>
-
-
-</body>
-
-</html>
+                            <div class="form-save">
+                                <button class="btn save--btn">Lưu nháp</button>
+                                <button type="submit" class="btn up--btn">Đăng ngay</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="preview">
+                    <div class="inner-preview">
+                        <div class="preview-title">
+                            <span><strong>Preview</strong></span>
+                            <i class="fa-solid fa-expand"></i>
+                        </div>
+                        <div class="preview-top">
+                            <img src="./assets/images/swt2.jpg" alt="sweater">
+                            <div class="sale">
+                                <span>SALE OFF</span>
+                                <i class="fa-regular fa-heart"></i>
+                            </div>
+                        </div>
+                        <div class="preview-bottom">
+                            <div class="bottom-left">
+                                <span>Cotton Sweater</span>
+                                <span><strong>280.000 VNĐ</strong></span>
+                            </div>
+                            <div class="bottom-right">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- </body>
+</html> -->

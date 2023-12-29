@@ -10,6 +10,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 :root {
     --base-color: #DB4040;
     --text-color: rgb(255, 255, 255);
+    --text-color-2: #141414;
 }
 
 * {
@@ -170,6 +171,10 @@ main {
     position: absolute;
 }
 
+/* .navbar-item-active a span{
+    color: var(--base-color);
+} */
+
 .navbar-item-active:hover .submenu {
     display: block;
     position: absolute;
@@ -178,7 +183,7 @@ main {
     z-index: 99;
 }
 
-.navbar-item-active:hover .overlay {
+.navbar-item--active:hover .overlay {
     display: block;
 }
 
@@ -336,6 +341,7 @@ select:focus {
     background: #141414;
     opacity: 0.3;
     z-index: 4;
+    height: 1000px;
 }
 
 .hidden {

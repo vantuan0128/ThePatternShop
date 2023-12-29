@@ -52,6 +52,11 @@
     gap: 40px;
 }
 
+/* .product__detail-container .detail__img .detail__img-colr {
+    display: flex;
+    align-items: center;
+} */
+
 /* .product__detail-container .detail__img-coll {
     display: flex;
     flex-direction: column;
@@ -88,11 +93,10 @@
     font-size: 14px;
     font-weight: 500;
     color: #8C8C8C;
-
 }
 
 .detail__container .detail__content-status span {
-    padding: 12px;
+    padding: 8px;
     color: #141414;
     background-color: #F7F7F7;
     margin-left: 24px;

@@ -17,7 +17,7 @@
 
     <body>
         <%@include file="/common/header.jsp" %>
-        <div class="pos-user-at">
+        <!-- <div class="pos-user-at">
             <div class="pos-user-at__title">
                 <div class="homepage">Trang chủ</div>
                 <div class="space">|</div>
@@ -29,7 +29,22 @@
         </div>
 
         <div class="devide" style="width: 1216px; border-top: 1px solid black; margin-left:145px">
-        </div>
+        </div> -->
+        <section class="control">
+            <div class="register-control">
+                <ul class="register-control-list">
+                    <li>
+                        <a href="/ThePatternShop">TRANG CHỦ</a>
+                    </li>
+                    <li>
+                        <a href="#">TÀI KHOẢN</a>
+                    </li>
+                    <li>
+                        <a href="#" style="color: #141414; font-weight: 600;">ĐĂNG KÝ</a>
+                    </li>
+                </ul>
+            </div>
+        </section>
         <div class="container">
             <div class="container_wrapper">
                 <h1>TẠO TÀI KHOẢN</h1>

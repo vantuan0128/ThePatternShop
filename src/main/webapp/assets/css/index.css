@@ -7,7 +7,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Author     : admin
 */
 @import url(basecf.css);
-
 /* header-banner */
 .header-banner {
     margin: 0;
@@ -174,7 +173,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 }
 
 .card{
-    width: 379px;
+    width: 300px;
     height: 578px;
 }
 
@@ -185,21 +184,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     overflow: hidden;
 }
 
-.img-content{
+.image-content{
     position: relative;
 }
 
-.img-content a, .img-content{
+.image-content a, .image-content{
     height: 100%;
-    width: 100%;
+    width: 379px;
     display: flex;
 }
 
-.img-content a img{
+.image-content a img{
     width: 100%;
     height: 100%;
     object-position: center;
-    object-fit: contain;
+    object-fit: cover;
     animation: fade 0.6s;
 }
 
@@ -227,6 +226,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 .card-category{
     width: 379px;
     margin-top: 24px;
+    display: flex;
     justify-content: space-between;
     align-items: flex-start;
 }
@@ -239,4 +239,110 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     margin-bottom: 90px;
 }
 
+/* big banner */
 
+.banner-big{
+    position: relative;
+    display: block;
+}
+
+.banner-big__image1, .banner-big__image2{
+    display: block;
+    padding-bottom: 40px;
+}
+
+.banner-big__btn{
+    position: absolute;
+    z-index: 3;
+    top: 500px;
+    left: 1100px;
+}
+
+
+/* collection */
+
+.collection{
+    padding: 100px;
+    display: block;
+}
+
+.collection-list{
+    display: flex;
+    flex-wrap: 40px;
+}
+.collection__item{
+    display: block;
+    margin-left: -40px;
+    overflow: hidden;
+    width: calc(33% - 40px);
+    margin-left: 40px;
+}
+
+
+/* check in instagram */
+
+.checked-instagram {
+    display: inline-block;
+    color: red;
+    width: 100%;
+    height: 100%;
+}
+
+.checked-instagram__title{
+    display: block;
+    align-items: center;
+    text-align: center;
+}
+.checked-instagram__title p{
+    text-align: center;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 64px;
+    color: black;
+}
+
+.checked-instagram__title h5{
+    margin-top: 24px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    color: black;
+}
+
+.checked-instagram__listitems{
+    display: block;
+    margin-bottom: 117px;
+    margin-top: 40px;
+}
+
+.checked-instagram__listitems-wrapper{
+    display: flex;
+    flex-wrap: 20px;
+}
+
+.checked-instagram__item{
+    overflow: hidden;
+    width: calc(25% - 40px);
+    margin-left: 40px;
+    margin-top: 40px;
+}
+.checked-instagram__item p{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    color: black;
+}
+
+.banner-bottom {
+    /* margin-left: 40px; */
+    position: relative;
+    display: block;
+}
+
+.banner-bottom a{
+    position: absolute;
+    z-index: 10;
+    top:300px;
+    left: 217px;
+}
