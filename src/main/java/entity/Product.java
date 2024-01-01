@@ -9,61 +9,63 @@ package entity;
  * @author admin
  */
 public class Product {
-    private String id, name, image, description;
-    private int cost;
+    private String productId, productName, productImage, productDescription;
+    private int productCost;
     private boolean isActive;
 
-    public Product(String id, String name, String image, String description, int cost, boolean isActive) {
-        this.id = id;
-        this.name = name;
-        this.image = image;
-        this.description = description;
-        this.cost = cost;
+    
+    
+    public Product(String productId, String productName, String productImage, String productDescription, int productCost, boolean isActive) {
+        this.productId = productId;
+        this.productName = productName;
+        this.productImage = productImage;
+        this.productDescription = productDescription;
+        this.productCost = productCost;
         this.isActive = isActive;
     }
 
-    public String getId() {
-        return id;
+    public String getProductId() {
+        return productId;
     }
 
-    public String getName() {
-        return name;
+    public String getProductName() {
+        return productName;
     }
 
-    public String getImage() {
-        return image;
+    public String getProductImage() {
+        return productImage;
     }
 
-    public String getDescription() {
-        return description;
+    public String getProductDescription() {
+        return productDescription;
     }
 
-    public int getCost() {
-        return cost;
+    public int getProductCost() {
+        return productCost;
     }
 
     public boolean isIsActive() {
         return isActive;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setProductImage(String productImage) {
+        this.productImage = productImage;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setProductDescription(String productDescription) {
+        this.productDescription = productDescription;
     }
 
-    public void setCost(int cost) {
-        this.cost = cost;
+    public void setProductCost(int productCost) {
+        this.productCost = productCost;
     }
 
     public void setIsActive(boolean isActive) {
@@ -72,6 +74,8 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" + "id=" + id + ", name=" + name + ", image=" + image + ", description=" + description + ", cost=" + cost + ", isActive=" + isActive + '}';
+        return "Product{" + "productId=" + productId + ", productName=" + productName + ", productImage=" + productImage + ", productDescription=" + productDescription + ", productCost=" + productCost + ", isActive=" + isActive + '}';
     }
+    
+    
 }

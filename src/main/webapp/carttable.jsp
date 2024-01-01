@@ -1,5 +1,9 @@
 <%-- Document : cart Created on : Dec 26, 2023, 10:52:21 AM Author : admin --%>
 
+<%@page import="dao.ProductDAO"%>
+<%@page import="dao.CartDAO"%>
+<%@page import="entity.Cart"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -45,7 +49,10 @@
                             </li>
                         </ul>
                     </div>
-
+                    <%
+                        String id = (String) session.getAttribute("id");
+                        List<Cart> listCart = (List<Cart>) new CartDAO().getAllCartById(id);
+                    %>
                     <div class="cart__container">
                         <p class="cart__container-head">GIỎ HÀNG CỦA BẠN</p>
                         <div class="cart__container-board">
@@ -64,40 +71,28 @@
                                 </thead>
 
                                 <tbody class="cart__board-list">
+                                <% 
+                                    for (Cart tempCart : listCart){
+                                %>
                                     <tr class="cart__board-content">
-                                        <td><img src="assets/images/products/newArrivals/Fr1_01.png" alt=""></td>
-                                        <td>Corduroy Bomber</td>
+                                        <td><img src="assets/images/products/newArrivals/A1.png" alt=""></td>
+                                        <td><%= tempCart.getProductDetailId() %> </td>
                                         <td>Đen - Size M</td>
-                                        <td class="cart__pro-cost">349000 VNĐ</td>
+                                        <td class="cart__pro-cost"><%= new ProductDAO().GetProductCostByProductId(tempCart.getProductDetailId().substring(0, tempCart.getProductDetailId().indexOf("_"))) %> VNĐ</td>
                                         <td>
                                             <div class="cart__board-quantity">
                                                 <p class="quantity-decrease">-</p>
-                                                <p class="cart__pro-quantity">01</p>
+                                                <p name="currentQuantity" class="cart__pro-quantity"><%= tempCart.getCount() %></p>
                                                 <p class="quantity-increase">+</p>
                                             </div>
                                         </td>
-                                        <td class="cart__pro-total">349000 VNĐ</td>
+                                        <td class="cart__pro-total"><%= tempCart.getTotal() %> VNĐ</td>
                                         <td class="cart__pro-btn-delete"><a href=""><span style="color: #DB4040; text-decoration: underline;">XÓA</span></a></td>
                                         <td class="cart__pro-checkbox"><input type="checkbox" style="width:16px; height: 16px;"></td>
                                     </tr>
-
-
-                                    <tr class="cart__board-content">
-                                        <td><img src="assets/images/products/newArrivals/Fr1_01.png" alt=""></td>
-                                        <td>Corduroy Bombe</td>
-                                        <td>Đen - Size M</td>
-                                        <td class="cart__pro-cost">349000 VNĐ</td>
-                                        <td>
-                                            <div class="cart__board-quantity">
-                                                <p class="quantity-decrease">-</p>
-                                                <p class="cart__pro-quantity">01</p>
-                                                <p class="quantity-increase">+</p>
-                                            </div>
-                                        </td>
-                                        <td class="cart__pro-total">349000 VNĐ</td>
-                                        <td class="cart__pro-btn-delete"><a href=""><span style="color: #DB4040; text-decoration: underline;">XÓA</span></a></td>
-                                        <td class="cart__pro-checkbox"><input type="checkbox" style="width:16px; height: 16px;"></td>
-                                    </tr>
+                                <%
+                                    }
+                                %>
                                 </tbody>
                             </table>
 
@@ -109,7 +104,7 @@
                         </div>
                         <div class="cart__container-cta">
                             <a href="all-product-sale.html" class="cart__cta-conti">TIẾP TỤC MUA SẮM</a>
-                            <a href="./payment.html" class="cart__cta-payment">TIẾN HÀNH THANH TOÁN</a>
+                            <a href="order" class="cart__cta-payment">TIẾN HÀNH THANH TOÁN</a>
                         </div>
                     </div>
                 </div>

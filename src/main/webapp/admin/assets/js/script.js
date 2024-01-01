@@ -59,13 +59,24 @@ function handleImageSelection() {
     }
 }
 
+function changeContent(contentId) {
+    document.querySelectorAll('.content').forEach(function (content) {
+        content.style.display = 'none';
+    });
 
+    // Show the selected content element
+    var selectedContent = document.getElementById(contentId);
+    if (selectedContent) {
+        selectedContent.style.display = 'flex'; // block
+        // console.log(selectedContent);
+    }
+}
 
 document.addEventListener('DOMContentLoaded', function () {
     const checkboxes = document.querySelectorAll('.checkbox');
     const resultTable = document.getElementById('resultTable');
     
-    console.log(checkboxes);
+    // console.log(checkboxes);
 
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', updateResult);
@@ -83,44 +94,116 @@ document.addEventListener('DOMContentLoaded', function () {
   
     function displayResults(colors, sizes) {
         resultTable.innerHTML = '';
-        colors.forEach(color => {
-            sizes.forEach(size => {
+        sizes.forEach(size => {
+            colors.forEach(color => {
                 const row = document.createElement('tr');
-                const colorCell = document.createElement('td');
                 const sizeCell = document.createElement('td');
+                const colorCell = document.createElement('td');
                 const quantityCell = document.createElement('td');
                 const quantityInput = document.createElement('input');
     
                 quantityInput.type = 'number';
                 quantityInput.min = '0';
-    
-                colorCell.textContent = color;
+                quantityInput.value = '1';
+                quantityInput.className = 'quantity';
+
                 sizeCell.textContent = size;
-                
+                colorCell.textContent = color;
+                // quantityInput.addEventListener('input', updateHiddenInputs);
+
+                quantityInput.addEventListener('input', function() {
+                    updateHiddenInputs();
+                    console.log(color, size, this.value);
+                });
                 quantityCell.appendChild(quantityInput);
     
-                row.appendChild(colorCell);
                 row.appendChild(sizeCell);
+                row.appendChild(colorCell);
                 row.appendChild(quantityCell);
-                console.log(color, size);
                 resultTable.appendChild(row);
             });
         });
     }
 });
-
-function changeContent(contentId) {
-    document.querySelectorAll('.content').forEach(function (content) {
-        content.style.display = 'none';
+function updateHiddenInputs(){
+    $('form input[type="hidden"]').remove();
+    var tableData = [];
+    $('#resultTable tr').each(function(row, tr) {
+        tableData[row] = {
+            "Kích thước" : $(tr).find('td:eq(0)').text(),
+            "Màu sắc" : $(tr).find('td:eq(1)').text(),
+            "Số lượng" : $(tr).find('td:eq(2) input').val()
+        }
     });
 
-    // Show the selected content element
-    var selectedContent = document.getElementById(contentId);
-    if (selectedContent) {
-        selectedContent.style.display = 'flex';
-        console.log(selectedContent);
+    // Add the table data to the form as hidden input fields
+    for (var i = 0; i < tableData.length; i++) {
+        $('form').append('<input type="hidden" name="tableData[' + i + '][Kích thước]" value="' + tableData[i]['Kích thước'] + '">');
+        $('form').append('<input type="hidden" name="tableData[' + i + '][Màu sắc]" value="' + tableData[i]['Màu sắc'] + '">');
+        $('form').append('<input type="hidden" name="tableData[' + i + '][Số lượng]" value="' + tableData[i]['Số lượng'] + '">');
     }
 }
+//  submit form
+$('form').on('submit', function(e) {
+    // Prevent the form from being submitted normally
+    e.preventDefault();
+
+    // Get the table data
+    // var tableData = [];
+    // $('#resultTable tr').each(function(row, tr) {
+    //     tableData[row] = {
+    //         "Kích thước" : $(tr).find('td:eq(0)').text(),
+    //         "Màu sắc" : $(tr).find('td:eq(1)').text(),
+    //         "Số lượng" : $(tr).find('td:eq(2) input').val()
+    //     }
+    // });
+
+    // // Add the table data to the form as hidden input fields
+    // for (var i = 0; i < tableData.length; i++) {
+    //     $(this).append('<input type="hidden" name="tableData[' + i + '][Kích thước]" value="' + tableData[i]['Kích thước'] + '">');
+    //     $(this).append('<input type="hidden" name="tableData[' + i + '][Màu sắc]" value="' + tableData[i]['Màu sắc'] + '">');
+    //     $(this).append('<input type="hidden" name="tableData[' + i + '][Số lượng]" value="' + tableData[i]['Số lượng'] + '">');
+    // }
+
+    // Submit the form
+    this.submit();
+});
+
+// show img input
+$('#imageInput').on('change', function() {
+    if (this.files && this.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $('#product__imgupload img').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(this.files[0]);
+    }
+});
+$('#productNameInput').on('input', function() {
+    $('#productNameDisplay').text($(this).val());
+});
+
+$('#productCostInput').on('input', function() {
+    $('#productCostDisplay').text($(this).val() + ' VNĐ');
+});
+
+// show hidden user
+$(document).ready(function () {
+    var rowsToShow = 4;
+    var totalRows = $('tbodyUser tr').length;
+
+    $('tbodyUser tr:gt(' + (rowsToShow - 1) + ')').addClass('hidden-row');
+
+    $('#loadMoreUser').on('click', function (e) {
+        e.preventDefault();
+        $('.hidden-row:lt(' + rowsToShow + ')').removeClass('hidden-row');
+        if ($('.hidden-row').length == 0) {
+            $('#loadMoreUser').hide();
+        }
+    });
+});
+
 window.addEventListener('DOMContentLoaded', (event) => {
     changeContent('overview');
 });
+

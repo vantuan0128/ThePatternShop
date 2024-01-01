@@ -99,47 +99,6 @@
                    line-height: 20px;">Cùng khám phá những sản phẩm mới nhất của nhà <span style="color: red;">Pattern</span>
                     nhé!</p>
             </div>
-
-            <!-- <div class="slide-container">
-                <div class="card-wrapper">
-                    <c:forEach var="tempProduct" items="${listproducts}">
-                        <div class="card">
-                            <c:url var="tempLink" value="ProductServlet">
-                                <c:param name="command" value="LOAD"/>
-                                <c:param name="id" value="${tempProduct.getId()}"/>
-                            </c:url>
-                            
-                            <div class="card-container">
-                                <div class="image-content">
-                                    <a href="product-details.jsp">
-                                        <img src="assets/images/products/newArrivals/${tempProduct.getImage()}" alt="Front">
-                                        
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="card-category">
-                                <div class="card-category__infor">
-                                    <p style="    font-weight: 400;
-                                       font-size: 20px;
-                                       line-height: 26px;">${tempProduct.getName()}</p>
-                                    <p style="    margin-top: 8px;
-                                       font-weight: 700;
-                                       font-size: 22px;
-                                       line-height: 22px;">${tempProduct.getCost()}</p>
-                                </div>
-
-                                <div class="card-category__color"
-                                     style="display: flex; justify-content:space-between; gap: 8px;">
-                                    <img src="assets/images/icons/colors/Color_01.png" alt="" style="width: 24px; height:24px">
-                                    <img src="assets/images/icons/colors/Color_02.png" alt="" style="width: 24px; height:24px">
-                                    <img src="assets/images/icons/colors/Color_03.png" alt="" style="width: 24px; height:24px">
-                                </div>
-                            </div>
-                        </div>
-                    </c:forEach>
-                </div>
-            </div> -->
             
             <div class="slide-container">
                 <div class="card-wrapper">
@@ -148,8 +107,8 @@
                         <div class="card">
                             <div class="card-container">
                                 <div class="image-content">
-                                    <a href="LoadProductDetail?Id=<%= tempProduct.getId()%>">
-                                        <img src="assets/images/products/newArrivals/<%= tempProduct.getImage()%>" alt="Front">
+                                    <a href="product-detail?productId=<%= tempProduct.getProductId()%>">
+                                        <img src="assets/images/products/newArrivals/<%= tempProduct.getProductImage()%>" alt="Front">
                                         
                                     </a>
                                 </div>
@@ -160,19 +119,19 @@
                                     <p style="font-weight: 400;
                                        font-size: 20px;
                                        line-height: 26px;">
-                                       <%= tempProduct.getName()%></p>
+                                       <%= tempProduct.getProductName()%></p>
                                     <p style="    margin-top: 8px;
                                        font-weight: 700;
                                        font-size: 22px;
                                        line-height: 22px;">
-                                       <%= tempProduct.getCost()%> VNĐ</p>
+                                       <%= tempProduct.getProductCost()%> VNĐ</p>
                                 </div>
 
                                 <div class="card-category__color"
                                      style="display: flex; justify-content:space-between; gap: 8px;">
-                                    <img src="assets/images/icons/colors/Color_01.png" alt="" style="width: 24px; height:24px">
-                                    <img src="assets/images/icons/colors/Color_02.png" alt="" style="width: 24px; height:24px">
-                                    <img src="assets/images/icons/colors/Color_03.png" alt="" style="width: 24px; height:24px">
+                                    <img src="assets/images/icons/Black.png" alt="" style="width: 24px; height:24px">
+                                    <img src="assets/images/icons/Gray.png" alt="" style="width: 24px; height:24px">
+                                    <img src="assets/images/icons/Brown.png" alt="" style="width: 24px; height:24px">
                                 </div>
                             </div>
                         </div>
@@ -180,6 +139,72 @@
                 </div>
             </div>
 
+            <div class="button-watch-more">
+                <a href=""><img src="assets/images/banners/see-more.png" alt=""></a>
+            </div>
+
+            <div class="new-arrivals-title">
+                <p style="text-align: center;
+                   font-weight: 400;
+                   font-size: 64px;
+                   line-height: 84px; color: var(--base-color);">SIÊU SALE LỄ HỘI</p>
+                <p style="margin-top: 24px;
+                   text-align: center;
+                   font-weight: 400;
+                   font-size: 20px;
+                   line-height: 20px;">GIẢM GIÁ TOÀN BỘ CỬA HÀNG</p>
+            </div>
+
+            <!-- time coundown -->
+
+            <div class="timecountdown">
+                <span id="timecountdown"></span>
+                <ul>
+                    <li>ngày</li>
+                    <li>giờ</li>
+                    <li>phút</li>
+                    <li>giây</li>
+                </ul>
+            </div>
+
+            <div class="slide-container">
+                <div class="card-wrapper">
+                    <% for(Product tempProduct : listproducts){ 
+                        %>
+                        <div class="card">
+                            <div class="card-container">
+                                <div class="image-content">
+                                    <a href="LoadProductDetail?Id=<%= tempProduct.getProductId()%>">
+                                        <img src="assets/images/products/newArrivals/<%= tempProduct.getProductImage()%>" alt="Front">
+                                        
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="card-category">
+                                <div class="card-category__infor">
+                                    <p style="font-weight: 400;
+                                       font-size: 20px;
+                                       line-height: 26px;">
+                                       <%= tempProduct.getProductName()%></p>
+                                    <p style="    margin-top: 8px;
+                                       font-weight: 700;
+                                       font-size: 22px;
+                                       line-height: 22px;">
+                                       <%= tempProduct.getProductCost()%> VNĐ</p>
+                                </div>
+
+                                <div class="card-category__color"
+                                     style="display: flex; justify-content:space-between; gap: 8px;">
+                                    <img src="assets/images/icons/Black.png" alt="" style="width: 24px; height:24px">
+                                    <img src="assets/images/icons/Gray.png" alt="" style="width: 24px; height:24px">
+                                    <img src="assets/images/icons/Brown.png" alt="" style="width: 24px; height:24px">
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
             <div class="button-watch-more">
                 <a href=""><img src="assets/images/banners/see-more.png" alt=""></a>
             </div>
@@ -321,6 +346,28 @@
         <script src="assets/js/swiper-newarrivals.js"></script>
         <script src="assets/js/next-product.js"></script>
 
+        <script>
+            function formatNumber(n) {
+                return n < 10 ? '0' + n : n;
+            }
+            
+            var countDownDate = new Date("Jan 4, 2024 15:37:25").getTime();
+            var x = setInterval(function () {
+                var now = new Date().getTime();
+            
+                var distance = countDownDate - now;
+                var days = formatNumber(Math.floor(distance / (1000 * 60 * 60 * 24)));
+                var hours = formatNumber(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+                var minutes = formatNumber(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
+                var seconds = formatNumber(Math.floor((distance % (1000 * 60)) / 1000));
+                document.getElementById("timecountdown").innerHTML = days + " : " + hours + " : "
+                    + minutes + " : " + seconds;
+                if (distance < 0) {
+                    clearInterval(x);
+                    document.getElementById("timecountdown").innerHTML = "EXPIRED";
+                }
+            }, 1000);
+        </script>
         <!-- <script>
             var size = '<%=request.getAttribute("PRODUCT_LIST")%>';
             console.log(size);

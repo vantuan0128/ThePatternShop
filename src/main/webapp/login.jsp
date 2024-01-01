@@ -17,19 +17,6 @@
 
     <body>
         <%@include file="/common/header.jsp" %>
-        <!-- <div class="pos-user-at">
-            <div class="pos-user-at__title">
-                <div class="homepage">Trang chủ</div>
-                <div class="space">|</div>
-                <div class="product">Tài khoản</div>
-                <div class="space">|</div>
-                <div class="sale">Đăng nhập</div>
-            </div>
-
-        </div>
-
-        <div class="devide" style="width: 1216px; border-top: 1px solid black; margin-left:145px">
-        </div> -->
         <section class="control">
             <div class="login-control">
                 <ul class="login-control-list">
@@ -48,16 +35,19 @@
         <div class="container">
             <div class="container_wrapper">
                 <h1>ĐĂNG NHẬP</h1>
-                <form action="login" id="loginForm" method="post">
+                <form action="home" id="loginForm" method="post">
                     <h3>Chào mừng bạn quay trở lại, khám phá ưu đãi mới nhất nhé!</p>
 
                         <div class="input-box">
-                            <input type="text" placeholder="Username *" name="Username" required="required">
+                            <input type="text" placeholder="Username *" name="id" required="required">
                         </div>
 
                         <div class="input-box">
-                            <input type="password" placeholder="Mật Khẩu *" name="Password" required="required">
+                            <input type="password" placeholder="Mật Khẩu *" name="password" required="required">
                         </div>
+                        <p style="font-size:16px; 
+                            color:red;
+                            margin-top:20px;"><i>${ms1}</i></p>
                         <div class="remember-forgot">
                             <label for=""><input type="checkbox"><span>Ghi nhớ mật khẩu</span></label>
                             <a class="forget_passord" href=""><span>Bạn quên mật khẩu?</span></a>

@@ -33,6 +33,9 @@
         <a href="#top" class="go-top">
             <img src="assets/images/icons/arrow-up.png" alt="">
         </a>
+        <% 
+            Product product = (Product)request.getAttribute("product");
+        %>
         <div class="container">
             <section class="product" id="product">
                 <div class="product__detail">
@@ -45,39 +48,29 @@
                                 <a href="#">SẢN PHẨM</a>
                             </li>
                             <li>
-                                <a href="#">ÁO</a>
-                            </li>
-                            <li>
-                                <a href="#" style="color: #141414; font-weight: 600;">ÁO KHOÁC</a>
+                                <a href="#" style="color: #141414; font-weight: 600;">CHI TIẾT SẢN PHẨM</a>
                             </li>
                         </ul>
                     </div>
-                    <% 
-                        Product product = (Product)request.getAttribute("product");
-                    %>
+
                     <div class="product__detail-container">
                         <div class="detail__img">
-                            <!-- <div class="detail__img-coll">
-                                <img src="./imgs/product-details/2.png" alt="">
-                                <img src="./imgs/product-details/3.png" alt="">
-                                <img src="./imgs/product-details/4.png" alt="">
-                            </div> -->
                             <div class="detail__img-colr">
-                                <img src="assets/images/products/newArrivals/<%=product.getImage()%>" alt="" style="width: 100%;">
+                                <img src="assets/images/products/newArrivals/<%=product.getProductImage()%>" alt="" style="width: 100%;">
                             </div>
                         </div>
 
                         <div class="detail__container">
                             <div class="detail__content">
                                 <div class="detail__content-title">
-                                    <p class="detail__content-head"><%= product.getName() %></p>
-                                    <p class="detail__content-code">Mã sản phẩm: <%= product.getId() %></p>
+                                    <p class="detail__content-head"><%= product.getProductName() %></p>
+                                    <p class="detail__content-code">Mã sản phẩm: <%= product.getProductId() %></p>
                                     <p class="detail__content-status">
                                         Tình trạng: <span>CÒN HÀNG</span>
                                     </p>
                                 </div>
 
-                                <p class="detail__content-price"><%= product.getCost() %> VND</p>
+                                <p class="detail__content-price"><%= product.getProductCost() %> VND</p>
 
                                 <div class="detail__content-quantity">
                                     <p>SỐ LƯỢNG</p>
@@ -91,9 +84,9 @@
                                 <div class="detail__content-color">
                                     <p>MÀU SẮC</p>
                                     <div>
-                                        <img class="selected" src="assets/images/icons/colors/Color_01.png" alt="" onclick="selectColor(this)">
-                                        <img src="assets/images/icons/colors/Color_02.png" alt="" onclick="selectColor(this)">
-                                        <img src="assets/images/icons/colors/Color_03.png" alt="" onclick="selectColor(this)">
+                                        <img class="selected" src="assets/images/icons/Black.png" alt="" onclick="selectColor(this)">
+                                        <img src="assets/images/icons/Gray.png" alt="" onclick="selectColor(this)">
+                                        <img src="assets/images/icons/Brown.png" alt="" onclick="selectColor(this)">
                                     </div>
                                 </div>
 
@@ -120,10 +113,19 @@
                                 </div>
                             </div>
 
-                            <div class="detail__content-cta">
+                            <!-- <div class="detail__content-cta">
                                 <p class="cta__second">THÊM VÀO GIỎ HÀNG</p>
                                 <p class="cta__primary">MUA NGAY</p>
-                            </div>
+                            </div> -->
+
+                            <form method="POST" action="addtocart" class="detail__content-cta">
+                                <input type="hidden" name="productId" value="<%= product.getProductId() %>">
+                                <input type="hidden" name="sizeId" id="_size-input">
+                                <input type="hidden" name="colorId" id="_color-input">
+                                <input type="hidden" name="quantity" id="_quantity-input">
+                                <button type="submit" class="cta__second">THÊM VÀO GIỎ HÀNG</button>
+                                <a href="buynow"><p class="">MUA NGAY</p></a>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -136,7 +138,7 @@
                             <img src="assets/images/icons/Arrow-down.svg" alt="" class="des__item-icon" id="count1" onclick="toggleContent(this)">
                         </div>
                         <p id="des__item-content1" class="product__des-list hidden-content">
-                            <%= product.getDescription() %>
+                            <%= product.getProductDescription() %>
                             </p>
                     </div>
                     <div class="product__des-item">
@@ -245,14 +247,17 @@
                 document.querySelectorAll('.detail__content-size ul li').forEach(function(item) {
                     item.classList.remove('active');
                 });
-    
                 element.classList.add('active');
+                document.getElementById('_size-input').value = element.textContent;
+
             }
             // color Selected
             function selectColor(element) {
                 let colorImages = document.querySelectorAll('.detail__content-color img');
                 colorImages.forEach(img => img.classList.remove('selected'));
-                    element.classList.add('selected');
+                element.classList.add('selected');
+                document.getElementById('_color-input').value = element.alt;
+                console.log(element.alt);
             }
 
             // counter
@@ -276,6 +281,7 @@
                     return;
                 }
                 document.getElementById('quantity').innerText = currentQuantity;
+                document.getElementById('_quantity-input').value = currentQuantity;
             }
 
 

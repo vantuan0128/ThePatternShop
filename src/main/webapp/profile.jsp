@@ -49,7 +49,7 @@
 				<div class="selection-list">
 					<div class="welcome">
 						<img src="./assets/images/logo/logo.png" alt="Logo">
-						<span>Xin chào, <b>Nguyễn Văn Tuấn</b></span>
+						<span>Xin chào, <b>${sessionScope.name}</b></span>
 					</div>
 					<div class="infor-list">
 						<ul>
@@ -57,45 +57,31 @@
 							<li><a href="#" onClick="showContent('content2',this)" class="sub-item">ĐỔI MẬT KHẨU</a></li>
 							<li><a href="#" onClick="showContent('content3',this)" class="sub-item">QUẢN LÝ ĐƠN HÀNG</a></li>
 							<li><a href="#" class="sub-item">WISH LIST</a></li>
-							<li><a href="#" class="sub-item" style="color: red; text-decoration:underline">ĐĂNG XUẤT</a></li>
+							<li><a href="logout" class="sub-item" style="color: red; text-decoration:underline">ĐĂNG XUẤT</a></li>
 						</ul>
 					</div>
 				</div>
 	
 				<div class="inner-account">
 					<div class="tab-content profile" id="content1">
-						<form>
+						<form action="updateProfile" id="updateForm" method="post">
 							<div>
 								<label for="full-name"><b>Họ và tên <span class="star">*</span></b></label>
-								<input type="text" class="full-name" placeholder="Nhập tên của bạn">
+								<input type="text" class="full-name" name="name" placeholder="Nhập tên của bạn" value="${sessionScope.name}">
 							</div>
 							<div>
 								<label for="phone-number"><b>Số điện thoại <span class="star">*</span></b></label>
-								<input type="text" class="phone-number" placeholder="Nhập số điện thoại của bạn">
+								<input type="text" class="phone-number" name="mobiPhone" placeholder="Nhập số điện thoại của bạn" value="${sessionScope.mobiPhone}">
 							</div>
 							<div>
-								<label for="birthday"><b>Ngày sinh <span class="star">*</span></b></label>
-								<input type="date" class="birthday" placeholder="dd/mm/yy">
-							</div>
-							<div>
-								<label for=""><b>Tỉnh/Thành phố <span class="star">*</span></b></label>
-								<select class="form-select form-select-sm mb-3" id="city" aria-label=".form-select-sm">
-									<option value="" selected>Chọn Tỉnh/Thành phố</option>
-								</select>
-								<label for=""><b>Chọn Quận/Huyện <span class="star">*</span></b></label>
-								<select class="form-select form-select-sm mb-3" id="district" aria-label=".form-select-sm">
-									<option value="" selected>Chọn Quận/Huyện</option>
-								</select>
-								<label for=""><b>Chọn Phường/Xã <span class="star">*</span></b></label>
-								<select class="form-select form-select-sm" id="ward" aria-label=".form-select-sm">
-									<option value="" selected>Chọn Phường/Xã</option>
-								</select>
+								<label for="email"><b>Email <span class="star">*</span></b></label>
+								<input type="text" class="birthday" name="email" placeholder="Email" value="${sessionScope.email}">
 							</div>
 							<div>
 							</div>
 							<div>
 								<label for="address"><b>Địa chỉ chi tiết <span class="star">*</span></b></label>
-								<input type="text" class="address" placeholder="Địa chỉ chi tiết">
+								<input type="text" class="address" name="address" placeholder="Địa chỉ chi tiết" value="${sessionScope.address}">
 							</div>
 							<input type="submit" id="button" value="CẬP NHẬT">
 						</form>
@@ -103,14 +89,14 @@
 	
 					<!-- Doi mat khau -->
 					<div class="tab-content change-password" id="content2">
-						<form>
+						<form action="updatePassword" id="updatePasswordForm" method="post">
 							<div>
 								<label for=""><b>Mật khẩu cũ <span class="star">*</span></b></label>
 								<input type="text" placeholder="Nhập mật khẩu cũ">
 							</div>
 							<div>
 								<label for=""><b>Mật khẩu mới <span class="star">*</span></b></label>
-								<input type="text" placeholder="Nhập mật khẩu mới">
+								<input type="text" placeholder="Nhập mật khẩu mới" name="newPassword">
 							</div>
 							<div>
 								<label for=""><b>Xác nhận mật khẩu mới <span class="star">*</span></b></label>
@@ -163,9 +149,9 @@
 	</div> -->
 
     <%@include file="/common/footer.jsp" %>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
-	<script src="assets/js/backtotop.js"></script>
-	<script src="assets/js/overlay-hidden.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="assets/js/backtotop.js"></script>
+    <script src="assets/js/overlay-hidden.js"></script>
     <script src="./assets/js/profile.js"></script>
 </body>
 

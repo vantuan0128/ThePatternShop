@@ -1,109 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    .checkbox-column {
-        display: flex;
-      }
-      
-      .checkbox-group {
-        margin-right: 20px;
-      }
-      
-      .checkbox {
-        margin-bottom: 10px;
-      }
-      
-      .result-box {
-        margin-top: 10px;
-        padding: 10px;
-        border: 1px solid #ccc;
-        width: 200px;
-      }
-      
-  </style>
-  <title>Checkbox Combination</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		.timecountdown {
+			width: 383px;
+			border: 1px solid black;
+			border-radius: 50px;
+			height: 111px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		span {
+			text-align: center;
+			font-size: 44px;
+			padding-top: 15px;
+		}
+
+		.timecountdown ul {
+			padding-left: 0;
+			width: 70%;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			margin: 0 0 0 0;
+		}
+
+		.timecountdown ul li {
+			list-style-type: none;
+			font-size: 16px;
+			font-weight: bold;
+		}
+	</style>
 </head>
+
 <body>
-  <table>
-    <thead>
-      <tr>
-        <th>Color</th>
-        <th>Size</th>
-        <th>Count</th>
-      </tr>
-    </thead>
-    <tbody id="resultTable">
-    </tbody>
-  </table>
+	<div class="timecountdown">
+		<span id="demo"></span>
+		<ul>
+			<li>ngày</li>
+			<li>giờ</li>
+			<li>phút</li>
+			<li>giây</li>
+		</ul>
+	</div>
 
-  <div class="checkbox-column">
-    <div class="checkbox-group">
-      <label for="redCheckbox">Red</label>
-      <input type="checkbox" id="redCheckbox" class="checkbox" data-category="color">
-    </div>
+	<script>
+		function formatNumber(n) {
+			return n < 10 ? '0' + n : n;
+		}
+		
+		var countDownDate = new Date("Jan 1, 2024 15:37:25").getTime();
+		var x = setInterval(function () {
+			var now = new Date().getTime();
+		
+			var distance = countDownDate - now;
+			var days = formatNumber(Math.floor(distance / (1000 * 60 * 60 * 24)));
+			var hours = formatNumber(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+			var minutes = formatNumber(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
+			var seconds = formatNumber(Math.floor((distance % (1000 * 60)) / 1000));
+			document.getElementById("demo").innerHTML = days + " : " + hours + " : "
+				+ minutes + " : " + seconds;
+			if (distance < 0) {
+				clearInterval(x);
+				document.getElementById("demo").innerHTML = "EXPIRED";
+			}
+		}, 1000);
+	</script>
 
-    <div class="checkbox-group">
-      <label for="blueCheckbox">Blue</label>
-      <input type="checkbox" id="blueCheckbox" class="checkbox" data-category="color">
-    </div>
-  </div>
-
-  <div class="checkbox-column">
-    <div class="checkbox-group">
-      <label for="smallCheckbox">Small</label>
-      <input type="checkbox" id="smallCheckbox" class="checkbox" data-category="size">
-    </div>
-
-    <div class="checkbox-group">
-      <label for="largeCheckbox">Large</label>
-      <input type="checkbox" id="largeCheckbox" class="checkbox" data-category="size">
-    </div>
-  </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const checkboxes = document.querySelectorAll('.checkbox');
-        const resultTable = document.getElementById('resultTable');
-      
-        checkboxes.forEach(checkbox => {
-          checkbox.addEventListener('change', updateResult);
-        });
-      
-        function updateResult() {
-          const selectedColors = Array.from(document.querySelectorAll('.checkbox[data-category="color"]:checked'))
-            .map(checkbox => checkbox.id.replace('Checkbox', ''));
-      
-          const selectedSizes = Array.from(document.querySelectorAll('.checkbox[data-category="size"]:checked'))
-            .map(checkbox => checkbox.id.replace('Checkbox', ''));
-      
-          displayResults(selectedColors, selectedSizes);
-        }
-      
-        function displayResults(colors, sizes) {
-          resultTable.innerHTML = '';
-      
-          colors.forEach(color => {
-            sizes.forEach(size => {
-              const row = document.createElement('tr');
-              const colorCell = document.createElement('td');
-              const sizeCell = document.createElement('td');
-      
-              colorCell.textContent = color;
-              sizeCell.textContent = size;
-      
-              row.appendChild(colorCell);
-              row.appendChild(sizeCell);
-      
-              resultTable.appendChild(row);
-            });
-          });
-        }
-      });
-      
-  </script>
 </body>
-</html> 
 
+</html>

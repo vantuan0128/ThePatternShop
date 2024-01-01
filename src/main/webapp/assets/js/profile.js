@@ -66,3 +66,7 @@ function showContent(page,clickedElement) {
 
     clickedElement.style.fontWeight = 'bold';
 }
+
+window.addEventListener('DOMContentLoaded', (event) => {
+    showContent('content1', this);
+});

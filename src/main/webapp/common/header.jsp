@@ -81,8 +81,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
     <div class="header__icon-list">
         <a href="" class="icon-item"><i class="icon-Search"></i></a>
-        <a href="" class="icon-item"><i class="icon-Shopping-Bag"></i></a>
-        <a href="" class="icon-item"><i class="icon-User"></i></a>
+        <a href="mycart" class="icon-item"><i class="icon-Shopping-Bag"></i></a>
+        <a href="profile" class="icon-item"><i class="icon-User"></i></a>
     </div>
 </header>
 

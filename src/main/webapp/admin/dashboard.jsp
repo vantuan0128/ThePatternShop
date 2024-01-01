@@ -1,3 +1,5 @@
+<%@page import="entity.Customer"%>
+<%@page import="dao.CustomerDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="entity.Product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
@@ -104,6 +106,7 @@
                         <i class="icon-top-nav fa-solid fa-message"></i>
                         <i class="icon-top-nav fa-regular fa-bell"></i>
                         <img src="./assets/images/team3.jpg" alt="">
+                        <a href="logout2"><span>Log out</span></a>
                     </div>
                 </div>
 
@@ -223,14 +226,14 @@
                                         <tr class="manageproduct__product-item">
                                             <td class="manageproduct__product-first-col">
                                                 <input type="checkbox" class="check-box">
-                                                <img src="./assets/images/products/newArrivals/<%= tempProduct.getImage()%>" alt="product">
-                                                <span><strong><%= tempProduct.getName()%></strong></span>
+                                                <img src="./assets/images/products/newArrivals/<%= tempProduct.getProductImage()%>" alt="product">
+                                                <span><strong><%= tempProduct.getProductName()%></strong></span>
                                             </td>
-                                            <td><%= tempProduct.getCost()%> VNĐ</td>
+                                            <td><%= tempProduct.getProductCost()%> VNĐ</td>
                                             <td>100</td>
                                             <td class="active"><span>Còn hàng</span></td>
-                                            <td><a href="EditProduct?Id=<%= tempProduct.getId()%>">Edit</a> &nbsp;&nbsp;&nbsp;&nbsp; 
-                                                <a href="DeleteProduct?Id=<%= tempProduct.getId()%>">Delete</a></td>
+                                            <td><a href="EditProduct?productID=<%= tempProduct.getProductId()%>">Edit</a> &nbsp;&nbsp;&nbsp;&nbsp; 
+                                                <a href="DeleteProduct?productID=<%= tempProduct.getProductId()%>">Delete</a></td>
                                         </tr>
                                        <% } %>
                                     </tbody>
@@ -268,78 +271,67 @@
                                                 <span>Tên</span>
                                             </th>
                                             <th>Email</th>
-                                            <th>Trạng thái</th>
                                             <th>Vai trò</th>
+                                            <th>Trạng thái</th>
                                             <th>Thao tác</th>
                                         </tr>
                                     </thead>
 
-                                    <tbody>
+                                    <tbody id="tbodyUser">
+                                        <%
+                                            CustomerDAO dao = new CustomerDAO();
+                                            List<Customer> customer = dao.getAllCustomer();
+                                            for (Customer c : customer) {
+                                        %>
                                         <tr class="manageuser__user-item">
                                             <td class="manageuser__user-first-col">
                                                 <input type="checkbox" class="user__check-box">
                                                 <img src="assets/images/team1.png" alt="user">
                                                 <div class="manageuser__user-name">
-                                                    <span><strong>Nguyễn Quốc Đạt</strong></span>
-                                                    <span>@username</span>
+                                                    <span><strong><%= c.getName() %></strong></span>
+                                                    <span><%= c.getId() %></span>
                                                 </div>
                                             </td>
-                                            <td class="manageuser__user-email">mail1234@gmail.com</td>
-                                            <td class="manageuser__user-status"><span>Hoạt động</span></td>
-                                            <td class="manageuser__user-role"><strong>User</strong></td>
-                                            <td class="manageuser__user-operation"><strong><a href="Disabled?Id=">Vô hiệu hóa</a></strong></td>
-                                        </tr>
+                                            <td class="manageuser__user-email"><%= c.getEmail() %></td>
+                                            
 
-                                        <tr class="manageuser__user-item">
-                                            <td class="manageuser__user-first-col">
-                                                <input type="checkbox" class="user__check-box">
-                                                <img src="assets/images/team1.png" alt="user">
-                                                <div class="manageuser__user-name">
-                                                    <span><strong>Nguyễn Quốc Đạt</strong></span>
-                                                    <span>@username</span>
-                                                </div>
-                                            </td>
-                                            <td class="manageuser__user-email">mail1234@gmail.com</td>
-                                            <td class="manageuser__user-status unactive"><span>Vô hiệu hóa</span></td>
-                                            <td class="manageuser__user-role"><strong>User</strong></td>
-                                            <td class="manageuser__user-operation"><strong><a href="Disabled?Id=">Kích hoạt</a></strong></td>
-                                        </tr>
+                                            <% if (c.getId().equals("admin")) {
+                                            %>
+                                            <td class="manageuser__user-role"><strong>Admin</strong></td>    
+                                            <% 
+                                            } else {
+                                            %>
+                                            <td class="manageuser__user-role"><strong>User</strong></td>    
+                                            <% 
+                                                }
+                                            %>
 
-                                        <tr class="manageuser__user-item">
-                                            <td class="manageuser__user-first-col">
-                                                <input type="checkbox" class="user__check-box">
-                                                <img src="assets/images/team1.png" alt="user">
-                                                <div class="manageuser__user-name">
-                                                    <span><strong>Nguyễn Quốc Đạt</strong></span>
-                                                    <span>@username</span>
-                                                </div>
-                                            </td>
-                                            <td class="manageuser__user-email">mail1234@gmail.com</td>
-                                            <td class="manageuser__user-status"><span>Hoạt động</span></td>
-                                            <td class="manageuser__user-role"><strong>User</strong></td>
-                                            <td class="manageuser__user-operation"><strong><a href="Disabled?Id=">Vô hiệu hóa</a></strong></td>
+                                            <% if(c.getState().equals("Hoạt động")) {
+                                            %>
+                                            
+                                            <td class="manageuser__user-status"><span>Hoạt động</span></td>                                                                                                               
+                                            <td class="manageuser__user-operation"><strong><a style="text-decoration:none; color: #1A1D1F;" href="disable?id=<%= c.getId()%>">Vô hiệu hóa</a></strong></td>
+                                            
+                                            <% 
+                                                } else {
+                                            %>
+                                            
+                                            <td class="manageuser__user-status"><span>Vô hiệu hóa</span></td>                                                                                       
+                                            <td class="manageuser__user-operation"><strong><a style="text-decoration:none; color: #1A1D1F;" href="disable?id=<%= c.getId()%>">Kích hoạt</a></strong></td>
+                                            
+                                            <% 
+                                                }
+                                            %>
                                         </tr>
-
-
-                                        <tr class="manageuser__user-item">
-                                            <td class="manageuser__user-first-col">
-                                                <input type="checkbox" class="user__check-box">
-                                                <img src="assets/images/team1.png" alt="user">
-                                                <div class="manageuser__user-name">
-                                                    <span><strong>Nguyễn Quốc Đạt</strong></span>
-                                                    <span>@username</span>
-                                                </div>
-                                            </td>
-                                            <td class="manageuser__user-email">mail1234@gmail.com</td>
-                                            <td class="manageuser__user-status"><span>Hoạt động</span></td>
-                                            <td class="manageuser__user-role"><strong>User</strong></td>
-                                            <td class="manageuser__user-operation"><strong><a href="Disabled?Id=">Vô hiệu hóa</a></strong></td>
-                                        </tr>
+                                        
+                                        <%
+                                            }
+                                        %>
                                     </tbody>
                                 </table>
 
                                 <div class="content__manageuser__load-more">
-                                    <button class="btn btn-load">Load more</button>
+                                    <button id="loadMoreUser" class="btn btn-load">Load more</button>
                                 </div>
                             </div>
                         </div>
@@ -351,12 +343,12 @@
                             <h1>Thêm sản phẩm mới</h1>
                             <div class="product-infor">
                                 <h3>Tên và Mô tả sản phẩm</h3>
-                                <form action="AddProduct" method="POST" enctype="multipart/form-data">
+                                <form action="addproduct" method="POST" enctype="multipart/form-data">
                                     <label class="product-infor__title"><strong>Mã Sản Phẩm</strong></label>
-                                    <input type="text" class="box-title" name="Id">
+                                    <input type="text" class="box-title" name="productId">
 
                                     <label class="product-infor__title"><strong>Tiêu đề sản phẩm</strong></label>
-                                    <input type="text" class="box-title" name="Name">
+                                    <input type="text" class="box-title" name="productName" id="productNameInput">
                                     <label class="product-infor__title" for=""><strong>Mô tả sản phẩm</strong></label>
                                     <div class="text-box">
                                         <div class="box-top">
@@ -374,7 +366,7 @@
                                                 <i class="fa-solid fa-arrow-right"></i>
                                             </div>
                                         </div>
-                                        <textarea name="Description" id="" cols="30" rows="10"></textarea>
+                                        <textarea name="productDescription" id="" cols="30" rows="10"></textarea>
                                     </div>
                                     <h3>Hình ảnh</h3>
                                     <div class="product-images">
@@ -383,7 +375,7 @@
                                     <h3>Giá sản phẩm</h3>
                                     <div class="product__box-price">
                                         <span>VNĐ</span>
-                                        <input type="text" name="Cost">
+                                        <input type="text" name="productCost" id="productCostInput">
                                     </div>
 
                                     <!-- <div class="product-prices">
@@ -431,29 +423,39 @@
                                         <div class="product__select-category" id="select-color">
                                             <label for="color"><b>Màu sắc</b></label>
                                             <div class="product__checkbox-group">
-                                                <input type="checkbox" id="grayCheckbox" class="checkbox"
+                                                <input type="checkbox" id="GrayCheckbox" class="checkbox"
                                                        data-category="color">
                                                 <div class="product__checkbox-color color1"></div>
                                             </div>
                                             <div class="product__checkbox-group">
-                                                <input type="checkbox" id="brownCheckbox" class="checkbox"
+                                                <input type="checkbox" id="BrownCheckbox" class="checkbox"
                                                        data-category="color">
                                                 <div class="product__checkbox-color color2"></div>
                                             </div>
                                             <div class="product__checkbox-group">
-                                                <input type="checkbox" id="blackCheckbox" class="checkbox"
+                                                <input type="checkbox" id="BlackCheckbox" class="checkbox"
                                                        data-category="color">
                                                 <div class="product__checkbox-color color3"></div>
                                             </div>
                                             <div class="product__checkbox-group">
-                                                <input type="checkbox" id="whiteCheckbox" class="checkbox"
+                                                <input type="checkbox" id="WhiteCheckbox" class="checkbox"
                                                        data-category="color">
                                                 <div class="product__checkbox-color color4"></div>
                                             </div>
                                             <div class="product__checkbox-group">
-                                                <input type="checkbox" id="redCheckbox" class="checkbox"
+                                                <input type="checkbox" id="RedCheckbox" class="checkbox"
                                                        data-category="color">
                                                 <div class="product__checkbox-color color5"></div>
+                                            </div>
+                                            <div class="product__checkbox-group">
+                                                <input type="checkbox" id="GreenCheckbox" class="checkbox"
+                                                       data-category="color">
+                                                <div class="product__checkbox-color color6"></div>
+                                            </div>
+                                            <div class="product__checkbox-group">
+                                                <input type="checkbox" id="BeigeCheckbox" class="checkbox"
+                                                       data-category="color">
+                                                <div class="product__checkbox-color color7"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -476,6 +478,36 @@
                                         <button type="submit" class="btn up--btn">Đăng ngay</button>
                                     </div>
                                 </form>
+                            </div>
+                        </div>
+
+                        <div class="product__preview">
+                            <div class="product__card">
+                                <div class="product__card-container">
+                                    <div id="product__imgupload" class="product__image-content">
+                                        <img src="" alt="Ảnh mẫu">
+                                    </div>
+                                </div>
+                                <div class="product__card-category">
+                                    <div class="card__category__infor">
+                                        <p id="productNameDisplay" style="font-weight: 400;
+                                           font-size: 20px;
+                                           line-height: 26px;">
+                                           </p>
+                                        <p id="productCostDisplay" style="margin-top: 8px;
+                                           font-weight: 700;
+                                           font-size: 22px;
+                                           line-height: 22px;">
+                                           </p>
+                                    </div>
+
+                                    <div class="card__category-color"
+                                     style="display: flex; justify-content:space-between; gap: 8px;">
+                                        <img src="assets/images/icons/Black.png" alt="" style="width: 24px; height:24px">
+                                        <img src="assets/images/icons/Gray.png" alt="" style="width: 24px; height:24px">
+                                        <img src="assets/images/icons/Brown.png" alt="" style="width: 24px; height:24px">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

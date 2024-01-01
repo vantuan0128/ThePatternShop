@@ -5,6 +5,7 @@
 package dao;
 
 import context.DBContext;
+import entity.Customer;
 import entity.Product;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,110 +21,141 @@ import java.util.List;
 public class ProductDAO {
     private DBContext dbContext;
     
+    Connection conn = null;
+    PreparedStatement ps = null;
+    ResultSet rs = null;
     public ProductDAO(){
         dbContext = new DBContext();
     }
     
-    private static final String tableName = "products";
+    private static final String tableName = "product";
     
-    
-    private static final String INSERT_PRODUCT = "insert into " + tableName + " (Id, Name, Image, Description, Cost, IsActive) VALUES " +
-        " (?, ?, ?, ?, ?, ?);";
-    private static final String SELECT_PRODUCT_BY_ID = "select * from " + tableName + " where Id = ?;";
-    private static final String SELECT_ALL_PRODUCT = "select * from " + tableName + ";";
-    private static final String DELETE_PRODUCT_MYSQL = "delete from " + tableName + " where Id = ?;";
-    private static final String UPDATE_PRODUCT_MYSQL = "update " + tableName + " set Name = ?, Image= ?, Description = ?, Cost = ?, IsActive = ? where Id = ?;";
-    
-    
+    public List<Product> getAllProduct(){
+        String query = "select * from product;";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            List<Product> list = new ArrayList<>();
+            while(rs.next()) {
+                list.add(new Product(rs.getString(1),rs.getString(2),rs.getString(3), rs.getString(4), rs.getInt(5),
+                            rs.getBoolean(6)));
+            }
+            return list;
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
     
     public void insertProduct(Product product){
-        try (Connection connection = dbContext.getConnection(); 
-            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_PRODUCT)) {
-            preparedStatement.setString(1, product.getId());
-            preparedStatement.setString(2, product.getName());
-            preparedStatement.setString(3, product.getImage());
-            preparedStatement.setString(4, product.getDescription());
-            preparedStatement.setInt(5, product.getCost());
-            preparedStatement.setBoolean(6, product.isIsActive());
-//            System.out.println(preparedStatement);
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            printSQLException(e);
+        
+        String query = "insert into product(productId,productName,productImage,productDescription,productCost,isActive) VALUES(?,?,?,?,?,?);";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, product.getProductId());
+            ps.setString(2,product.getProductName());
+            ps.setString(3, product.getProductImage());
+            ps.setString(4, product.getProductDescription());
+            ps.setInt(5, product.getProductCost());
+            ps.setBoolean(6, product.isIsActive());
+            ps.executeUpdate();
+        }
+        catch(Exception e){  
+            System.out.println(e);
         }
     }
-    public Product selectProduct(String id) {
-        Product product = null;
-        try (Connection connection = dbContext.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_PRODUCT_BY_ID);) {
-            preparedStatement.setString(1, id);
-//            System.out.println(preparedStatement);
-            ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()) {
-                String name = rs.getString("name");
-                String image = rs.getString("image");
-                String description = rs.getString("description");
-                int cost = rs.getInt("cost");
-                boolean isActive = rs.getBoolean("isActive");
-                
-                product = new Product(id, name, image, description, cost, isActive);
+    
+    public void deleteProduct(String productID){
+        String query = "delete from product where productId = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, productID );
+            ps.executeUpdate();
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+    }
+    
+    public void updateProduct(Product product){
+        String query = "update product set productName = ?, productImage = ?, productDescripntion = ?, productCost = ?, isActive = ? where productId = ?;";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, product.getProductName());
+            ps.setString(2, product.getProductImage());
+            ps.setString(3, product.getProductDescription());
+            ps.setInt(4, product.getProductCost());
+            ps.setBoolean(5, product.isIsActive());
+            ps.executeUpdate();
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+    }
+    
+    public Product getProductById(String productId){
+        String query = "select * from product where productId = ?;";
+        try{
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1,productId);
+            rs = ps.executeQuery();
+            while(rs.next()) {
+                return new Product(rs.getString(1),
+                                    rs.getString(2),
+                                    rs.getString(3),
+                                    rs.getString(4),
+                                    rs.getInt(5),
+                                    rs.getBoolean(6));
             }
-        } catch (SQLException e) {
-            printSQLException(e);
         }
-        return product;
+        catch(Exception e){
+            System.out.println(e);
+        }
+        return null;
     }
-    public List <Product> selectAllProducts() {
-        List <Product> products = new ArrayList <> ();
-        try (Connection connection = dbContext.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_PRODUCT);) {
-            System.out.println(preparedStatement);
-            ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()) {
-                String id = rs.getString("id");
-                String name = rs.getString("name");
-                String image = rs.getString("image");
-                String description = rs.getString("description");
-                int cost = rs.getInt("cost");
-                boolean isActive = rs.getBoolean("isActive");
-                products.add(new Product(id, name, image, description, cost, isActive));
+    
+    public int GetProductCostByProductId(String productId){
+        String query = "select * from product where productId = ?;";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, productId);
+            rs = ps.executeQuery();
+            while(rs.next()) {
+                return new Product(rs.getString(1),rs.getString(2),rs.getString(3), rs.getString(4), rs.getInt(5),
+                            rs.getBoolean(6)).getProductCost();
             }
-        } catch (SQLException e) {
-            printSQLException(e);
         }
-        return products;
+        catch(Exception e){
+            System.out.println(e);
+        }
+        return 0;
     }
     
-    public boolean deleteProduct(String id) throws SQLException {
-        boolean rowDeleted = false;
-        try (Connection connection = dbContext.getConnection(); 
-            PreparedStatement statement = connection.prepareStatement(DELETE_PRODUCT_MYSQL);) {
-            statement.setString(1, id);
-            rowDeleted = statement.executeUpdate() > 0;
+    public String GetProductNameByProductId(String productId){
+        String query = "select * from product where productId = ?;";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, productId);
+            rs = ps.executeQuery();
+            while(rs.next()) {
+                return new Product(rs.getString(1),rs.getString(2),rs.getString(3), rs.getString(4), rs.getInt(5),
+                            rs.getBoolean(6)).getProductName();
+            }
         }
-        catch (SQLException e) {
-            printSQLException(e);
+        catch(Exception e){
+            System.out.println(e);
         }
-        return rowDeleted;
+        return "";
     }
-    
-    public boolean updateProduct(Product product) throws SQLException {
-        boolean rowUpdated = false;
-        try (Connection connection = dbContext.getConnection(); 
-            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_PRODUCT_MYSQL);) {
-            preparedStatement.setString(1, product.getName());
-            preparedStatement.setString(2, product.getImage());
-            preparedStatement.setString(3, product.getDescription());
-            preparedStatement.setInt(4, product.getCost());
-            preparedStatement.setBoolean(5, product.isIsActive());
-            rowUpdated = preparedStatement.executeUpdate() > 0;
-        }
-        catch (SQLException e) {
-            printSQLException(e);
-        }
-        return rowUpdated;
-    }
-    
-    
+   
     private void printSQLException(SQLException ex) {
         for (Throwable e: ex) {
             if (e instanceof SQLException) {
