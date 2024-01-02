@@ -5,6 +5,7 @@
 package dao;
 
 import context.DBContext;
+import entity.Color;
 import entity.ProductDetail;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -46,6 +47,105 @@ public class ProductDetailDAO {
         return null;
     }
     
+    public List<String> getAllColorByProductId(String productId){
+        String query = "select distinct colorId from productdetail where productId = ?;";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, productId);
+            rs = ps.executeQuery();
+            List<String> list = new ArrayList<>();
+            while(rs.next()) {
+                list.add(rs.getString(1));
+            }
+            return list;
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
+    
+    public int getQuantity(String productDetailId){
+        String query = "select quantity from productdetail where productDetailId = ?;";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, productDetailId);
+            rs = ps.executeQuery();
+            int res = 0;
+            while(rs.next()) {
+                res += rs.getInt(1);
+            }
+            return res;
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+        return 0;
+    }
+    
+    public List<String> getAllSizeByProductId(String productId){
+        String query = "select distinct sizeId from productdetail where productId = ?;";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, productId);
+            rs = ps.executeQuery();
+            List<String> list = new ArrayList<>();
+            while(rs.next()) {
+                list.add(rs.getString(1));
+            }
+            return list;
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
+    
+    public int getQuantityByProductId(String productId){
+        String query = "select * from productdetail where productId = ?;";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, productId);
+            rs = ps.executeQuery();
+            int res = 0;
+            while(rs.next()) {
+                ProductDetail a;
+                a = new ProductDetail(rs.getString(2),rs.getString(3), rs.getString(4), rs.getInt(5));
+                res += a.getQuantity();
+            }
+            return res;
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+        return 0;
+    }
+    
+    public int getQuantityByProductDetailId(String productDetailId){
+        String query = "select * from productdetail where productDetailId = ?;";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, productDetailId);
+            rs = ps.executeQuery();
+            int res = 0;
+            while(rs.next()) {
+                ProductDetail a;
+                a = new ProductDetail(rs.getString(2),rs.getString(3), rs.getString(4), rs.getInt(5));
+                res += a.getQuantity();
+            }
+            return res;
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+        return 0;
+    }
+        
     public void insertProductDetail(ProductDetail productDetail){
         String query = "insert into productdetail(productDetailId, productId, sizeId, colorId, quantity) VALUES(?,?,?,?,?);";
         

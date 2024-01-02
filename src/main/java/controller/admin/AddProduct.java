@@ -76,7 +76,7 @@ public class AddProduct extends HttpServlet {
             sizes.add(size);
             colors.add(color);
             quantities.add(quantity);
-            System.out.println(size + " " + color + " " +  quantity);
+//            System.out.println(size + " " + color + " " +  quantity);
             index++;
         }
         

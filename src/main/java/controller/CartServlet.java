@@ -42,9 +42,9 @@ public class CartServlet extends HttpServlet {
 
         if (session.getAttribute("id") != null) {
             String id = String.valueOf(session.getAttribute("id"));
-            System.out.println(id);
+//            System.out.println(id);
             List<Cart> carts = (List<Cart>) cartDAO.getAllCartById(id);
-            System.out.println(carts);
+//            System.out.println(carts);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/carttable.jsp");
             dispatcher.forward(request, response);
         } else {

@@ -1,3 +1,4 @@
+<%@page import="dao.ProductDetailDAO"%>
 <%@page import="entity.Customer"%>
 <%@page import="dao.CustomerDAO"%>
 <%@page import="java.util.List"%>
@@ -230,7 +231,7 @@
                                                 <span><strong><%= tempProduct.getProductName()%></strong></span>
                                             </td>
                                             <td><%= tempProduct.getProductCost()%> VNĐ</td>
-                                            <td>100</td>
+                                            <td><%= new ProductDetailDAO().getQuantityByProductId(tempProduct.getProductId()) %></td>
                                             <td class="active"><span>Còn hàng</span></td>
                                             <td><a href="EditProduct?productID=<%= tempProduct.getProductId()%>">Edit</a> &nbsp;&nbsp;&nbsp;&nbsp; 
                                                 <a href="DeleteProduct?productID=<%= tempProduct.getProductId()%>">Delete</a></td>
@@ -423,14 +424,9 @@
                                         <div class="product__select-category" id="select-color">
                                             <label for="color"><b>Màu sắc</b></label>
                                             <div class="product__checkbox-group">
-                                                <input type="checkbox" id="GrayCheckbox" class="checkbox"
+                                                <input type="checkbox" id="BeigeCheckbox" class="checkbox"
                                                        data-category="color">
-                                                <div class="product__checkbox-color color1"></div>
-                                            </div>
-                                            <div class="product__checkbox-group">
-                                                <input type="checkbox" id="BrownCheckbox" class="checkbox"
-                                                       data-category="color">
-                                                <div class="product__checkbox-color color2"></div>
+                                                <div class="product__checkbox-color color7"></div>
                                             </div>
                                             <div class="product__checkbox-group">
                                                 <input type="checkbox" id="BlackCheckbox" class="checkbox"
@@ -438,25 +434,32 @@
                                                 <div class="product__checkbox-color color3"></div>
                                             </div>
                                             <div class="product__checkbox-group">
+                                                <input type="checkbox" id="BrownCheckbox" class="checkbox"
+                                                       data-category="color">
+                                                <div class="product__checkbox-color color2"></div>
+                                            </div>
+                                            <div class="product__checkbox-group">
+                                                <input type="checkbox" id="GrayCheckbox" class="checkbox"
+                                                       data-category="color">
+                                                <div class="product__checkbox-color color1"></div>
+                                            </div>
+
+
+                                            <!-- <div class="product__checkbox-group">
                                                 <input type="checkbox" id="WhiteCheckbox" class="checkbox"
                                                        data-category="color">
                                                 <div class="product__checkbox-color color4"></div>
-                                            </div>
-                                            <div class="product__checkbox-group">
+                                            </div> -->
+                                            <!-- <div class="product__checkbox-group">
                                                 <input type="checkbox" id="RedCheckbox" class="checkbox"
                                                        data-category="color">
                                                 <div class="product__checkbox-color color5"></div>
-                                            </div>
-                                            <div class="product__checkbox-group">
+                                            </div> -->
+                                            <!-- <div class="product__checkbox-group">
                                                 <input type="checkbox" id="GreenCheckbox" class="checkbox"
                                                        data-category="color">
                                                 <div class="product__checkbox-color color6"></div>
-                                            </div>
-                                            <div class="product__checkbox-group">
-                                                <input type="checkbox" id="BeigeCheckbox" class="checkbox"
-                                                       data-category="color">
-                                                <div class="product__checkbox-color color7"></div>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
 
@@ -503,9 +506,9 @@
 
                                     <div class="card__category-color"
                                      style="display: flex; justify-content:space-between; gap: 8px;">
-                                        <img src="assets/images/icons/Black.png" alt="" style="width: 24px; height:24px">
-                                        <img src="assets/images/icons/Gray.png" alt="" style="width: 24px; height:24px">
-                                        <img src="assets/images/icons/Brown.png" alt="" style="width: 24px; height:24px">
+                                        <img src="assets/images/icons/colors/Beige.png" alt="" style="width: 24px; height:24px">
+                                        <img src="assets/images/icons/colors/Black.png" alt="" style="width: 24px; height:24px">
+                                        <img src="assets/images/icons/colors/Brown.png" alt="" style="width: 24px; height:24px">
                                     </div>
                                 </div>
                             </div>

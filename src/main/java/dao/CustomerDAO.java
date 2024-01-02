@@ -63,7 +63,7 @@ public class CustomerDAO {
     }
     
     public void deleteCustomer(String id) {
-        String query = "delete from customer where id = ?";
+        String query = "delete from customer where id = ?;";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);

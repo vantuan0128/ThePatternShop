@@ -129,9 +129,10 @@
 
                                 <div class="card-category__color"
                                      style="display: flex; justify-content:space-between; gap: 8px;">
-                                    <img src="assets/images/icons/Black.png" alt="" style="width: 24px; height:24px">
-                                    <img src="assets/images/icons/Gray.png" alt="" style="width: 24px; height:24px">
-                                    <img src="assets/images/icons/Brown.png" alt="" style="width: 24px; height:24px">
+                                    <img src="assets/images/icons/colors/Beige.png" alt="" style="width: 24px; height:24px">
+                                    <img src="assets/images/icons/colors/Black.png" alt="" style="width: 24px; height:24px">
+                                    <img src="assets/images/icons/colors/Brown.png" alt="" style="width: 24px; height:24px">
+                                    <img src="assets/images/icons/colors/Gray.png" alt="" style="width: 24px; height:24px">
                                 </div>
                             </div>
                         </div>
@@ -174,13 +175,12 @@
                         <div class="card">
                             <div class="card-container">
                                 <div class="image-content">
-                                    <a href="LoadProductDetail?Id=<%= tempProduct.getProductId()%>">
+                                    <a href="product-detail?productId=<%= tempProduct.getProductId()%>">
                                         <img src="assets/images/products/newArrivals/<%= tempProduct.getProductImage()%>" alt="Front">
                                         
                                     </a>
                                 </div>
                             </div>
-
                             <div class="card-category">
                                 <div class="card-category__infor">
                                     <p style="font-weight: 400;
@@ -193,7 +193,6 @@
                                        line-height: 22px;">
                                        <%= tempProduct.getProductCost()%> VNĐ</p>
                                 </div>
-
                                 <div class="card-category__color"
                                      style="display: flex; justify-content:space-between; gap: 8px;">
                                     <img src="assets/images/icons/Black.png" alt="" style="width: 24px; height:24px">

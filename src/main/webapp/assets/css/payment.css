@@ -277,6 +277,10 @@
     padding: 16px;
     background-color: #141414;
 }
+.delivery__content-cta .delivery__cta-payment:hover {
+    cursor: pointer;
+}
+
 
 
 .delivery__content-info form h3{

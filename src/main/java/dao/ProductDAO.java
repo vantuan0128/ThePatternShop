@@ -138,6 +138,24 @@ public class ProductDAO {
         return 0;
     }
     
+    public String GetProductImageByProductId(String productId){
+        String query = "select * from product where productId = ?;";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, productId);
+            rs = ps.executeQuery();
+            while(rs.next()) {
+                return new Product(rs.getString(1),rs.getString(2),rs.getString(3), rs.getString(4), rs.getInt(5),
+                            rs.getBoolean(6)).getProductImage();
+            }
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+        return "";
+    } 
+    
     public String GetProductNameByProductId(String productId){
         String query = "select * from product where productId = ?;";
         try {

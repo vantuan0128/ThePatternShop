@@ -61,7 +61,6 @@
                                     <tr class="cart__title-list">
                                         <th>SẢN PHẨM</th>
                                         <th>TÊN SẢN PHẨM</th>
-                                        <th>MÔ TẢ</th>
                                         <th>ĐƠN GIÁ</th>
                                         <th>SỐ LƯỢNG</th>
                                         <th>TỔNG</th>
@@ -75,19 +74,19 @@
                                     for (Cart tempCart : listCart){
                                 %>
                                     <tr class="cart__board-content">
-                                        <td><img src="assets/images/products/newArrivals/A1.png" alt=""></td>
+                                        <% String url = new ProductDAO().GetProductImageByProductId(tempCart.getProductDetailId().substring(0, tempCart.getProductDetailId().indexOf("_"))); %>
+                                        <td><img src="assets/images/products/newArrivals/<%= url %>" alt=""></td>
                                         <td><%= tempCart.getProductDetailId() %> </td>
-                                        <td>Đen - Size M</td>
                                         <td class="cart__pro-cost"><%= new ProductDAO().GetProductCostByProductId(tempCart.getProductDetailId().substring(0, tempCart.getProductDetailId().indexOf("_"))) %> VNĐ</td>
                                         <td>
-                                            <div class="cart__board-quantity">
+                                            <div class="cart__board-quantity" data-product-id="<%= tempCart.getProductDetailId() %>" data-quantity="<%= tempCart.getCount() %>">
                                                 <p class="quantity-decrease">-</p>
-                                                <p name="currentQuantity" class="cart__pro-quantity"><%= tempCart.getCount() %></p>
+                                                <p name="currentQuantity" class="cart__pro-quantity"><%= String.format("%02d", tempCart.getCount()) %></p>
                                                 <p class="quantity-increase">+</p>
                                             </div>
                                         </td>
                                         <td class="cart__pro-total"><%= tempCart.getTotal() %> VNĐ</td>
-                                        <td class="cart__pro-btn-delete"><a href=""><span style="color: #DB4040; text-decoration: underline;">XÓA</span></a></td>
+                                        <td class="cart__pro-btn-delete"><a href="deleteCart?productDetailId=<%= tempCart.getProductDetailId() %> "><span style="color: #DB4040; text-decoration: underline;">XÓA</span></a></td>
                                         <td class="cart__pro-checkbox"><input type="checkbox" style="width:16px; height: 16px;"></td>
                                     </tr>
                                 <%
@@ -102,10 +101,12 @@
                                 <p class="cart__provisional" id="sumTotal">TẠM TÍNH: <span>0 VNĐ</span></p>
                             </div>
                         </div>
-                        <div class="cart__container-cta">
-                            <a href="all-product-sale.html" class="cart__cta-conti">TIẾP TỤC MUA SẮM</a>
-                            <a href="order" class="cart__cta-payment">TIẾN HÀNH THANH TOÁN</a>
-                        </div>
+                        <form class="cart__container-cta" method="post" action="order">
+                            <a href="<%= request.getContextPath() %>/allproducts.jsp" class="cart__cta-conti">TIẾP TỤC MUA SẮM</a>
+                            <input type="hidden" id="selected-products" name="selectedProducts">
+
+                            <button class="cart__cta-payment">TIẾN HÀNH ĐẶT HÀNG</button>
+                        </form>
                     </div>
                 </div>
 
@@ -280,6 +281,23 @@
                 totalProElement.innerText = totalPro;
             }
 
+            document.addEventListener('DOMContentLoaded', function() {
+                var submitButton = document.querySelector('.cart__cta-payment');
+                var hiddenInput = document.querySelector('#selected-products');
+            
+                submitButton.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    var checkedBoxes = document.querySelectorAll(
+                        '.cart__pro-checkbox input[type="checkbox"]:checked');
+                    var productDetailIds = Array.from(checkedBoxes).map(function(checkbox) {
+                        return checkbox.closest('.cart__board-content').querySelector(
+                            '.cart__board-quantity').getAttribute('data-product-id');
+                    });
+            
+                    hiddenInput.value = productDetailIds.join(',');
+                    event.target.form.submit();
+                });
+            });
         </script>
         <script src="assets/js/overlay-hidden.js"></script>
         <script src="assets/js/backtotop.js"></script>

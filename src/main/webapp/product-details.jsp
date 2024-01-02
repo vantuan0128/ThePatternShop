@@ -1,5 +1,6 @@
 <%-- Document : product-details Created on : Nov 19, 2023, 10:19:43 AM Author : admin --%>
 
+<%@page import="dao.ProductDetailDAO"%>
 <%@page import="entity.Product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
@@ -84,27 +85,27 @@
                                 <div class="detail__content-color">
                                     <p>MÀU SẮC</p>
                                     <div>
-                                        <img class="selected" src="assets/images/icons/Black.png" alt="" onclick="selectColor(this)">
-                                        <img src="assets/images/icons/Gray.png" alt="" onclick="selectColor(this)">
-                                        <img src="assets/images/icons/Brown.png" alt="" onclick="selectColor(this)">
+                       
+                                        <% for (String c: new ProductDetailDAO().getAllColorByProductId(product.getProductId())){
+                                        %>
+                                           <img src="assets/images/icons/colors/<%= c %>.png" alt="<%= c %>" onclick="selectColor(this)">
+                                        <%
+                                            }
+                                        %>
                                     </div>
                                 </div>
 
                                 <div class="detail__content-size">
                                     <p>KÍCH CỠ</p>
                                     <ul>
-                                        <li class="active" onclick="changeSize(this)">
-                                            <span>M</span>
-                                        </li>
-                                        <li onclick="changeSize(this)">
-                                            <span>L</span>
-                                        </li>
-                                        <li onclick="changeSize(this)">
-                                            <span>XL</span>
-                                        </li>
-                                        <li onclick="changeSize(this)">
-                                            <span>2XL</span>
-                                        </li>
+                                        <% for (String c: new ProductDetailDAO().getAllSizeByProductId(product.getProductId())){
+                                        %>
+                                            <li onclick="changeSize(this)">
+                                                <span><%= c %></span>
+                                            </li>
+                                        <%
+                                            }
+                                        %>
                                     </ul>
                                     <div class="detail__content-size-suggest">
                                         <img src="assets/images/icons/Ruler.svg" alt="">
@@ -180,10 +181,6 @@
                     </div>
                 </div>
 
-
-
-
-
                 <!-- <div class="product__suggest">
                     <p class="product__suggest-head">CÓ THỂ BẠN SẼ THÍCH</p>
                     <ul class="product__suggest-list">
@@ -248,7 +245,9 @@
                     item.classList.remove('active');
                 });
                 element.classList.add('active');
-                document.getElementById('_size-input').value = element.textContent;
+                var text = element.querySelector('span').textContent;
+                document.getElementById('_size-input').value = text;
+                // console.log(text);
 
             }
             // color Selected
@@ -257,12 +256,13 @@
                 colorImages.forEach(img => img.classList.remove('selected'));
                 element.classList.add('selected');
                 document.getElementById('_color-input').value = element.alt;
-                console.log(element.alt);
+                // console.log(element.alt);
             }
 
             // counter
             let currentQuantity = 1;
-
+            document.getElementById('_quantity-input').value = currentQuantity;
+            
             function incrementQuantity() {
                 currentQuantity++;
                 updateQuantity();
@@ -278,12 +278,13 @@
             function updateQuantity() {
                 if (currentQuantity < 10) {
                     document.getElementById('quantity').innerText = '0' + currentQuantity;
+                    document.getElementById('_quantity-input').value = currentQuantity;
                     return;
                 }
                 document.getElementById('quantity').innerText = currentQuantity;
                 document.getElementById('_quantity-input').value = currentQuantity;
+                // console.log(currentQuantity);
             }
-
 
             function toggleContent(element) {
                 var contentId = "des__item-content" + element.id.slice(-1);

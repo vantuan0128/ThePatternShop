@@ -4,6 +4,9 @@
     Author     : admin
 --%>
 
+<%@page import="dao.ProductDAO"%>
+<%@page import="entity.Product"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -50,11 +53,11 @@
                         </ul> 
                     </div>
 
-                    <div class="allproducts__detail-banner">
+                    <!-- <div class="allproducts__detail-banner">
                         <img src="assets/images/banners/allproducts.png" alt="">
             
-                        <!-- <a href=""><img src="imgs/buy-now-button-red/Frame 54.png" alt=""></a> -->
-                    </div>
+                        <a href=""><img src="imgs/buy-now-button-red/Frame 54.png" alt=""></a>
+                    </div> -->
 
                     <div class="allproducts__searchbox">
                         <form action="">
@@ -152,14 +155,20 @@
                                 </div>
                             </div>
                         </div>
+                        <%
+                            List<Product> listproducts = new ProductDAO().getAllProduct();
+                        %>
 
                         <div class="allproducts__container-right">
                             <div class="allproducts__container-wrapper">
+                                <% 
+                                    for (Product tempProduct : listproducts) {
+                                %>
                                 <div class="card">
                                     <div class="card-container">
                                         <div class="image-content">
-                                            <a href="">
-                                                <img src="assets/images/products/newArrivals/A1.png" alt="Front">
+                                            <a href="product-detail?productId=<%= tempProduct.getProductId() %>">
+                                                <img src="assets/images/products/newArrivals/<%= tempProduct.getProductImage() %>" alt="Front">
                                             </a>
                                         </div>
                                     </div>
@@ -169,280 +178,27 @@
                                             <p style="font-weight: 400;
                                                font-size: 20px;
                                                line-height: 26px;">
-                                               TempName</p>
+                                               <%= tempProduct.getProductName() %></p>
                                             <p style="    margin-top: 8px;
                                                font-weight: 700;
                                                font-size: 22px;
                                                line-height: 22px;">
-                                               400000 VNĐ</p>
+                                               <%= tempProduct.getProductCost() %></p>
                                         </div>
         
                                         <div class="card-category__color"
                                              style="display: flex; justify-content:space-between; gap: 8px;">
-                                            <img src="assets/images/icons/colors/Color_01.png" alt="" style="width: 24px; height:24px">
-                                            <img src="assets/images/icons/colors/Color_02.png" alt="" style="width: 24px; height:24px">
-                                            <img src="assets/images/icons/colors/Color_03.png" alt="" style="width: 24px; height:24px">
+                                            <img src="assets/images/icons/colors/Beige.png" alt="" style="width: 24px; height:24px">
+                                            <img src="assets/images/icons/colors/Black.png" alt="" style="width: 24px; height:24px">
+                                            <img src="assets/images/icons/colors/Brown.png" alt="" style="width: 24px; height:24px">
+                                            <img src="assets/images/icons/colors/Gray.png" alt="" style="width: 24px; height:24px">
+
                                         </div>
                                     </div>
                                 </div>
-
-
-                                <div class="card">
-                                    <div class="card-container">
-                                        <div class="image-content">
-                                            <a href="">
-                                                <img src="assets/images/products/newArrivals/A1.png" alt="Front">
-                                            </a>
-                                        </div>
-                                    </div>
-        
-                                    <div class="card-category">
-                                        <div class="card-category__infor">
-                                            <p style="font-weight: 400;
-                                               font-size: 20px;
-                                               line-height: 26px;">
-                                               TempName</p>
-                                            <p style="    margin-top: 8px;
-                                               font-weight: 700;
-                                               font-size: 22px;
-                                               line-height: 22px;">
-                                               400000 VNĐ</p>
-                                        </div>
-        
-                                        <div class="card-category__color"
-                                             style="display: flex; justify-content:space-between; gap: 8px;">
-                                            <img src="assets/images/icons/colors/Color_01.png" alt="" style="width: 24px; height:24px">
-                                            <img src="assets/images/icons/colors/Color_02.png" alt="" style="width: 24px; height:24px">
-                                            <img src="assets/images/icons/colors/Color_03.png" alt="" style="width: 24px; height:24px">
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-                                <div class="card">
-                                    <div class="card-container">
-                                        <div class="image-content">
-                                            <a href="">
-                                                <img src="assets/images/products/newArrivals/A1.png" alt="Front">
-                                            </a>
-                                        </div>
-                                    </div>
-        
-                                    <div class="card-category">
-                                        <div class="card-category__infor">
-                                            <p style="font-weight: 400;
-                                               font-size: 20px;
-                                               line-height: 26px;">
-                                               TempName</p>
-                                            <p style="    margin-top: 8px;
-                                               font-weight: 700;
-                                               font-size: 22px;
-                                               line-height: 22px;">
-                                               400000 VNĐ</p>
-                                        </div>
-        
-                                        <div class="card-category__color"
-                                             style="display: flex; justify-content:space-between; gap: 8px;">
-                                            <img src="assets/images/icons/colors/Color_01.png" alt="" style="width: 24px; height:24px">
-                                            <img src="assets/images/icons/colors/Color_02.png" alt="" style="width: 24px; height:24px">
-                                            <img src="assets/images/icons/colors/Color_03.png" alt="" style="width: 24px; height:24px">
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-                                <div class="card">
-                                    <div class="card-container">
-                                        <div class="image-content">
-                                            <a href="">
-                                                <img src="assets/images/products/newArrivals/A1.png" alt="Front">
-                                            </a>
-                                        </div>
-                                    </div>
-        
-                                    <div class="card-category">
-                                        <div class="card-category__infor">
-                                            <p style="font-weight: 400;
-                                               font-size: 20px;
-                                               line-height: 26px;">
-                                               TempName</p>
-                                            <p style="    margin-top: 8px;
-                                               font-weight: 700;
-                                               font-size: 22px;
-                                               line-height: 22px;">
-                                               400000 VNĐ</p>
-                                        </div>
-        
-                                        <div class="card-category__color"
-                                             style="display: flex; justify-content:space-between; gap: 8px;">
-                                            <img src="assets/images/icons/colors/Color_01.png" alt="" style="width: 24px; height:24px">
-                                            <img src="assets/images/icons/colors/Color_02.png" alt="" style="width: 24px; height:24px">
-                                            <img src="assets/images/icons/colors/Color_03.png" alt="" style="width: 24px; height:24px">
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-                                <div class="card">
-                                    <div class="card-container">
-                                        <div class="image-content">
-                                            <a href="">
-                                                <img src="assets/images/products/newArrivals/A1.png" alt="Front">
-                                            </a>
-                                        </div>
-                                    </div>
-        
-                                    <div class="card-category">
-                                        <div class="card-category__infor">
-                                            <p style="font-weight: 400;
-                                               font-size: 20px;
-                                               line-height: 26px;">
-                                               TempName</p>
-                                            <p style="    margin-top: 8px;
-                                               font-weight: 700;
-                                               font-size: 22px;
-                                               line-height: 22px;">
-                                               400000 VNĐ</p>
-                                        </div>
-        
-                                        <div class="card-category__color"
-                                             style="display: flex; justify-content:space-between; gap: 8px;">
-                                            <img src="assets/images/icons/colors/Color_01.png" alt="" style="width: 24px; height:24px">
-                                            <img src="assets/images/icons/colors/Color_02.png" alt="" style="width: 24px; height:24px">
-                                            <img src="assets/images/icons/colors/Color_03.png" alt="" style="width: 24px; height:24px">
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-                                <div class="card">
-                                    <div class="card-container">
-                                        <div class="image-content">
-                                            <a href="">
-                                                <img src="assets/images/products/newArrivals/A1.png" alt="Front">
-                                            </a>
-                                        </div>
-                                    </div>
-        
-                                    <div class="card-category">
-                                        <div class="card-category__infor">
-                                            <p style="font-weight: 400;
-                                               font-size: 20px;
-                                               line-height: 26px;">
-                                               TempName</p>
-                                            <p style="    margin-top: 8px;
-                                               font-weight: 700;
-                                               font-size: 22px;
-                                               line-height: 22px;">
-                                               400000 VNĐ</p>
-                                        </div>
-        
-                                        <div class="card-category__color"
-                                             style="display: flex; justify-content:space-between; gap: 8px;">
-                                            <img src="assets/images/icons/colors/Color_01.png" alt="" style="width: 24px; height:24px">
-                                            <img src="assets/images/icons/colors/Color_02.png" alt="" style="width: 24px; height:24px">
-                                            <img src="assets/images/icons/colors/Color_03.png" alt="" style="width: 24px; height:24px">
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="card">
-                                    <div class="card-container">
-                                        <div class="image-content">
-                                            <a href="">
-                                                <img src="assets/images/products/newArrivals/A1.png" alt="Front">
-                                            </a>
-                                        </div>
-                                    </div>
-        
-                                    <div class="card-category">
-                                        <div class="card-category__infor">
-                                            <p style="font-weight: 400;
-                                               font-size: 20px;
-                                               line-height: 26px;">
-                                               TempName</p>
-                                            <p style="    margin-top: 8px;
-                                               font-weight: 700;
-                                               font-size: 22px;
-                                               line-height: 22px;">
-                                               400000 VNĐ</p>
-                                        </div>
-        
-                                        <div class="card-category__color"
-                                             style="display: flex; justify-content:space-between; gap: 8px;">
-                                            <img src="assets/images/icons/colors/Color_01.png" alt="" style="width: 24px; height:24px">
-                                            <img src="assets/images/icons/colors/Color_02.png" alt="" style="width: 24px; height:24px">
-                                            <img src="assets/images/icons/colors/Color_03.png" alt="" style="width: 24px; height:24px">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="card-container">
-                                        <div class="image-content">
-                                            <a href="">
-                                                <img src="assets/images/products/newArrivals/A1.png" alt="Front">
-                                            </a>
-                                        </div>
-                                    </div>
-        
-                                    <div class="card-category">
-                                        <div class="card-category__infor">
-                                            <p style="font-weight: 400;
-                                               font-size: 20px;
-                                               line-height: 26px;">
-                                               TempName</p>
-                                            <p style="    margin-top: 8px;
-                                               font-weight: 700;
-                                               font-size: 22px;
-                                               line-height: 22px;">
-                                               400000 VNĐ</p>
-                                        </div>
-        
-                                        <div class="card-category__color"
-                                             style="display: flex; justify-content:space-between; gap: 8px;">
-                                            <img src="assets/images/icons/colors/Color_01.png" alt="" style="width: 24px; height:24px">
-                                            <img src="assets/images/icons/colors/Color_02.png" alt="" style="width: 24px; height:24px">
-                                            <img src="assets/images/icons/colors/Color_03.png" alt="" style="width: 24px; height:24px">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="card-container">
-                                        <div class="image-content">
-                                            <a href="">
-                                                <img src="assets/images/products/newArrivals/A1.png" alt="Front">
-                                            </a>
-                                        </div>
-                                    </div>
-        
-                                    <div class="card-category">
-                                        <div class="card-category__infor">
-                                            <p style="font-weight: 400;
-                                               font-size: 20px;
-                                               line-height: 26px;">
-                                               TempName</p>
-                                            <p style="    margin-top: 8px;
-                                               font-weight: 700;
-                                               font-size: 22px;
-                                               line-height: 22px;">
-                                               400000 VNĐ</p>
-                                        </div>
-        
-                                        <div class="card-category__color"
-                                             style="display: flex; justify-content:space-between; gap: 8px;">
-                                            <img src="assets/images/icons/colors/Color_01.png" alt="" style="width: 24px; height:24px">
-                                            <img src="assets/images/icons/colors/Color_02.png" alt="" style="width: 24px; height:24px">
-                                            <img src="assets/images/icons/colors/Color_03.png" alt="" style="width: 24px; height:24px">
-                                        </div>
-                                    </div>
-                                </div>
+                                <% 
+                                    } 
+                                %>
                             </div>
 
                             <div class="allproducts_counterpage">

@@ -63,21 +63,15 @@ function changeContent(contentId) {
     document.querySelectorAll('.content').forEach(function (content) {
         content.style.display = 'none';
     });
-
-    // Show the selected content element
     var selectedContent = document.getElementById(contentId);
     if (selectedContent) {
         selectedContent.style.display = 'flex'; // block
-        // console.log(selectedContent);
     }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
     const checkboxes = document.querySelectorAll('.checkbox');
     const resultTable = document.getElementById('resultTable');
-    
-    // console.log(checkboxes);
-
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', updateResult);
     });
@@ -145,27 +139,7 @@ function updateHiddenInputs(){
 }
 //  submit form
 $('form').on('submit', function(e) {
-    // Prevent the form from being submitted normally
     e.preventDefault();
-
-    // Get the table data
-    // var tableData = [];
-    // $('#resultTable tr').each(function(row, tr) {
-    //     tableData[row] = {
-    //         "Kích thước" : $(tr).find('td:eq(0)').text(),
-    //         "Màu sắc" : $(tr).find('td:eq(1)').text(),
-    //         "Số lượng" : $(tr).find('td:eq(2) input').val()
-    //     }
-    // });
-
-    // // Add the table data to the form as hidden input fields
-    // for (var i = 0; i < tableData.length; i++) {
-    //     $(this).append('<input type="hidden" name="tableData[' + i + '][Kích thước]" value="' + tableData[i]['Kích thước'] + '">');
-    //     $(this).append('<input type="hidden" name="tableData[' + i + '][Màu sắc]" value="' + tableData[i]['Màu sắc'] + '">');
-    //     $(this).append('<input type="hidden" name="tableData[' + i + '][Số lượng]" value="' + tableData[i]['Số lượng'] + '">');
-    // }
-
-    // Submit the form
     this.submit();
 });
 

@@ -26,7 +26,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
             <li id="home" class="navbar-item"><a href="/ThePatternShop"><span>Trang chủ</span></a></li>
             <li id="products" class="navbar-item-active">
                 <div class="hidden-item-active">
-                    <a href="">
+                    <a href="searchProduct">
                         <span>Sản phẩm</span>
                     </a>
                     <div class="submenu">
@@ -80,7 +80,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
     </div>
 
     <div class="header__icon-list">
-        <a href="" class="icon-item"><i class="icon-Search"></i></a>
+        <a href="searchProduct" class="icon-item"><i class="icon-Search"></i></a>
         <a href="mycart" class="icon-item"><i class="icon-Shopping-Bag"></i></a>
         <a href="profile" class="icon-item"><i class="icon-User"></i></a>
     </div>

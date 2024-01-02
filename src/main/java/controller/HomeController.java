@@ -55,18 +55,6 @@ public class HomeController extends HttpServlet {
                 request.setAttribute("ms1", message1);
                 request.getRequestDispatcher("/login.jsp").forward(request, response);
             }
-//            session.setAttribute("id", id);
-//            session.setAttribute("name", a.getName());
-//            session.setAttribute("email", a.getEmail());
-//            session.setAttribute("mobiPhone", a.getMobiPhone());
-//            session.setAttribute("address", a.getAddress());
-//            session.setAttribute("password", password);
-//
-//            if (id.equals("admin")) {
-//                response.sendRedirect(request.getContextPath() + "/admin/overview.jsp");
-//            } else {
-//                response.sendRedirect("index.jsp");
-//            }
         } else {
             String message1 = "Thông tin không chính xác, vui lòng nhập lại !";
             request.setAttribute("ms1", message1);

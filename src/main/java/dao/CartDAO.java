@@ -27,6 +27,7 @@ public class CartDAO {
         dbContext = new DBContext();
     }
     
+    
     public List<Cart> getAllCart(){
         String query = "select * from cart;";
         try {
@@ -67,6 +68,25 @@ public class CartDAO {
         return null;
     }
     
+    public void insertToCart(String id, String productDetailId, int count){
+        String query = "insert into cart(cartId, id, productDetailId, count, total) VALUES(?,?,?,?,?);";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            Cart c = new Cart(id, productDetailId, count);
+            int cost = new ProductDAO().GetProductCostByProductId(productDetailId.substring(0, productDetailId.indexOf("_")));
+            ps.setString(1, c.getCartId());
+            ps.setString(2, c.getId());
+            ps.setString(3, c.getProductDetailId());
+            ps.setInt(4, c.getCount());
+            ps.setInt(5, c.getCount() * cost);
+            ps.executeUpdate();
+        }
+        catch(Exception e){  
+            System.out.println(e);
+        }
+    }
+    
     public void updateCountCart(String id, String productDetailId, int _newCount){
         String query = "update cart set count = ?, total = ? where id = ? and productDetailId = ?;";
         int cost = new ProductDAO().GetProductCostByProductId(productDetailId.substring(0, productDetailId.indexOf("_")));
@@ -77,6 +97,20 @@ public class CartDAO {
             ps.setInt(2, _newCount * cost);
             ps.setString(3, id);
             ps.setString(4, productDetailId);
+            ps.executeUpdate();
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+    }
+    
+    public void deleteFromCart(String id, String productDetailId){
+         String query = "delete from cart where id = ? and productDetailId = ?;";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, id);
+            ps.setString(2, productDetailId);
             ps.executeUpdate();
         }
         catch(Exception e){

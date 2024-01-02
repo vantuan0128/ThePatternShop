@@ -48,12 +48,12 @@
     width: 40%;
 }
 
-.product__detail-container .detail__img {
+/* .product__detail-container .detail__img {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     gap: 40px;
-}
+} */
 
 /* .product__detail-container .detail__img .detail__img-colr {
     display: flex;

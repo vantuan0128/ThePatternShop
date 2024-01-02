@@ -1,5 +1,9 @@
 <%-- Document : payment Created on : Dec 26, 2023, 6:51:46 PM Author : admin --%>
 
+<%@page import="dao.ProductDAO"%>
+<%@page import="entity.Cart"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -7,7 +11,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thanh toán</title>
+    <title>Đặt Hàng</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link type="text/css" rel="stylesheet" href="assets/css/font.css" />
     <link type="text/css" rel="stylesheet" href="assets/css/swiper-bundle.min.css">
@@ -61,59 +65,37 @@
                                     <a href=""><span style="color: black;">Đăng nhập</span></a>
                                 </p> -->
                             </div>
-                            <form action="#">
+                            <form action="payment" method="post">
                                 <div class="form__list">
-                                    <input type="text" placeholder="Họ và tên">
-                                    <input type="tel" placeholder="Số điện thoại">
+                                    <input name="name" type="text" placeholder="Họ và tên" value="${sessionScope.name}">
+                                    <input name="mobiPhone" type="tel" placeholder="Số điện thoại" value="${sessionScope.mobiPhone}">
                                 </div>
-                                <input type="email" placeholder="Email">
-                                <input type="" placeholder="Địa chỉ giao hàng">
-                                <input type="text" placeholder="Ghi chú" style="height: 112px;">
-                                
-                                <!-- <div class="delivery__content-method"> -->
-                                    <!-- <p class="delivery__content-head">PHƯƠNG THỨC THANH TOÁN</p>
-                                    <div class="delivery__content-choose">
-                                        <div>
-                                            <input type="radio" name="Type" id="radio-active1" checked>
-                                            <p>Thanh toán khi nhận hàng ( COD )</p>
-                                        </div>
-                                        <div>
-                                            <input type="radio" name="Type" id="radio-active2">
-                                            <p>Thanh toán chuyển khoản</p>
-                                        </div>
-                                        <div>
-                                            <input type="radio" name="Type" id="radio-active3">
-                                            <p>Thanh toán trực tuyến cổng nội địa (ATM/ Internet banking,..)</p>
-                                        </div>
-                                        <div>
-                                            <input type="radio" name="Type" id="radio-active4">
-                                            <p>Thanh toán trực tuyến cổng quốc tế (Visa/ Mastercard/Paypal,..)</p>
-                                        </div>
-                                    </div> -->
-                                <!-- </div> -->
+                                <input name="email" type="email" placeholder="Email" value="${sessionScope.email}">
+                                <input name="address" type="" placeholder="Địa chỉ giao hàng" value="${sessionScope.address}">
+                                <input name="note" type="text" placeholder="Ghi chú" style="height: 112px;">
 
                                 <h3>Phương thức thanh toán</h3>
 
                                 <div class="delivery__content-method">
                                     <ul>
                                         <li>
-                                            <input type="radio" name="TypeMethod" id="radio-active1" checked>
+                                            <input type="radio" name="TypeMethod" id="radio-active1" checked value="COD">
                                             <label for="radio-active1">Thanh toán khi nhận hàng (COD)</label>
                                         </li>
     
                                         <li>
-                                            <input type="radio" name="TypeMethod" id="radio-active2">
+                                            <input type="radio" name="TypeMethod" id="radio-active2" value="Transfer">
                                             <label for="radio-active2">Thanh toán chuyển khoản</label>
                                         </li>
     
     
                                         <li>
-                                            <input type="radio" name="TypeMethod" id="radio-active3">
+                                            <input type="radio" name="TypeMethod" id="radio-active3" value="Domestic portal">
                                             <label for="radio-active3">Thanh toán trực tuyến cổng nội địa (ATM/ Internet banking,..)</label>
                                         </li>
     
                                         <li>
-                                            <input type="radio" name="TypeMethod" id="radio-active4">
+                                            <input type="radio" name="TypeMethod" id="radio-active4" value="International gateway">
                                             <label for="radio-active4">Thanh toán trực tuyến cổng quốc tế (Visa/ Mastercard/Paypal,..)</label>
                                         </li>
                                     </ul>
@@ -122,64 +104,59 @@
                                 <div class="delivery__content-cta">
                                     <div>
                                         <img src="assets/images/icons/Arrow-left.svg" alt="">
-                                        <a href="" class="delivery__cta-cart">GIỎ HÀNG</a>
+                                        <a href="mycart" class="delivery__cta-cart">GIỎ HÀNG</a>
                                     </div>
                                     <button type="submit" class="delivery__cta-payment">HOÀN TẤT ĐƠN HÀNG</button>
                                 </div>
                             </form>
                         </div>
-
-                        
                     </div>
-
+                    
+                    <%
+                        List<Cart> cartOrder =(List<Cart>) session.getAttribute("cartOrder");
+                    %>
+                    
                     <div class="delivery__content-colr">
                         <div class="delivery__content-pro">
-                            <div class="product">
-                                <img src="assets/images/1.png" alt="">
-                                <div class="product__info">
-                                    <div>
-                                        <p class="name">Corduroy Bomber</p>
-                                        <p class="size">Q: 01 - Black - XL </p>
-                                    </div>
-                                    <p class="price">349.000 VNĐ</p>
-                                </div>
-                            </div>
+                            <%
+                            for(Cart tempCart: cartOrder){   
+                            %>
+                                <div class="product">
+                                    <% String url = new ProductDAO().GetProductImageByProductId(tempCart.getProductDetailId().substring(0, tempCart.getProductDetailId().indexOf("_"))); %>
 
-                            <div class="product">
-                                <img src="assets/images/1.png" alt="">
-                                <div class="product__info">
-                                    <div>
-                                        <p class="name">Corduroy Bomber</p>
-                                        <p class="size">Q: 01 - Black - XL </p>
+                                    <img src="assets/images/products/newArrivals/<%= url %>" alt="">
+                                    <div class="product__info">
+                                        <div>
+                                            <p class="name"><%= new ProductDAO().GetProductNameByProductId(tempCart.getProductDetailId().substring(0, tempCart.getProductDetailId().indexOf("_"))) %></p>
+                                            <p class="size"><%= tempCart.getProductDetailId() %> - Số Lượng: <%= tempCart.getCount() %> </p>
+                                        </div>
+                                        <p class="price">Giá cả: <%= new ProductDAO().GetProductCostByProductId(tempCart.getProductDetailId().substring(0, tempCart.getProductDetailId().indexOf("_"))) %> </p>
                                     </div>
-                                    <p class="price">349.000 VNĐ</p>
                                 </div>
-                            </div>
-
-
-                            <div class="product">
-                                <img src="assets/images/1.png" alt="">
-                                <div class="product__info">
-                                    <div>
-                                        <p class="name">Corduroy Bomber</p>
-                                        <p class="size">Q: 01 - Black - XL </p>
-                                    </div>
-                                    <p class="price">349.000 VNĐ</p>
-                                </div>
-                            </div>
+                            
+                            <% 
+                            } 
+                            %>
+                            
+                            
 
                             <div class="voucher">
                                 <input type="text" placeholder="Mã giảm giá">
                                 <p>SỬ DỤNG</p>
                             </div>
-
+                            <%
+                                Integer provisional = Integer.valueOf(String.valueOf(session.getAttribute("orderTotal")));
+                                Integer shippingFee = 30000;
+                                Integer total = provisional + shippingFee;
+                            %>
+                    
                             <div class="provisional">
-                                <p>Tạm tính <span>349.000 VNĐ</span></p>
-                                <p>Phí vận chuyển <span>-</span></p>
+                                <p>Tạm tính <span><%= provisional %> VNĐ</span></p>
+                                <p>Phí vận chuyển <span><%= shippingFee %></span></p>
                             </div>
 
                             <div class="total">
-                                <p>Tổng cộng <span>349.000 VNĐ</span></p>
+                                <p>Tổng cộng <span><%= total %> VNĐ</span></p>
                             </div>
                         </div>
                         
