@@ -1,0 +1,54 @@
+CREATE TABLE `thepattern`.`customer` (`id` VARCHAR(20) NOT NULL , `password` VARCHAR(100) NOT NULL , `name` VARCHAR(45) NOT NULL , `email` VARCHAR(45) NOT NULL , `mobiPhone` VARCHAR(45) NOT NULL , `address` VARCHAR(100) NOT NULL , `state` VARCHAR(20) NOT NULL ) ENGINE = InnoDB;
+
+
+CREATE TABLE `thepattern`.`product` (`productId` VARCHAR(20) NOT NULL , `productName` VARCHAR(45) NOT NULL , `productImage` VARCHAR(45) NOT NULL , `productDescription` VARCHAR(200) NOT NULL , `productCost` INT NOT NULL , `isActive` BOOLEAN NOT NULL ) ENGINE = InnoDB;
+
+
+CREATE TABLE `thepattern`.`productdetail` (`productDetailId` VARCHAR(20) NOT NULL , `productId` VARCHAR(20) NOT NULL , `sizeId` VARCHAR(20) NOT NULL , `colorId` VARCHAR(20) NOT NULL , `quantity` INT NOT NULL ) ENGINE = InnoDB;
+
+CREATE TABLE `thepattern`.`size` (`sizeId` VARCHAR(20) NOT NULL , `sizeName` VARCHAR(20) NOT NULL ) ENGINE = InnoDB;
+CREATE TABLE `thepattern`.`color` (`colorId` VARCHAR(20) NOT NULL , `colorName` VARCHAR(20) NOT NULL ) ENGINE = InnoDB;
+
+
+CREATE TABLE `thepattern`.`cart` (`cartId` VARCHAR(20) NOT NULL , `id` VARCHAR(20) NOT NULL , `productDetailId` VARCHAR(20) NOT NULL , `count` INT NOT NULL , `total` INT NOT NULL ) ENGINE = InnoDB;
+
+CREATE TABLE `thepattern`.`order` (`orderId` VARCHAR(20) NOT NULL , `id` VARCHAR(20) NOT NULL , `staffId` VARCHAR(20) NOT NULL , `productDetailId` VARCHAR(20) NOT NULL , `createdData` VARCHAR(20) NOT NULL , `address` VARCHAR(100) NOT NULL , `state` VARCHAR(20) NOT NULL , `paymentMethod` VARCHAR(45) NOT NULL , `deliveryDate` VARCHAR(20) NOT NULL , `total` INT NOT NULL ) ENGINE = InnoDB;
+
+CREATE TABLE `thepattern`.`staff` (`staffId` VARCHAR(20) NOT NULL , `staffName` VARCHAR(45) NOT NULL , `staffSex` VARCHAR(10) NOT NULL , `staffAddress` VARCHAR(45) NOT NULL , `staffPhone` VARCHAR(45) NOT NULL , `staffDateOfBirth` VARCHAR(45) NOT NULL ) ENGINE = InnoDB;
+
+
+
+ALTER TABLE `size` ADD PRIMARY KEY(`sizeId`);
+ALTER TABLE `color` ADD PRIMARY KEY(`colorId`);
+ALTER TABLE `productdetail` ADD PRIMARY KEY(`productDetailId`, `productId`, `sizeId`, `colorId`);
+
+ALTER TABLE `staff` ADD PRIMARY KEY(`staffId`);
+
+ALTER TABLE `cart` ADD PRIMARY KEY(`cartId`, `id`, `productDetailId`);
+ALTER TABLE `cart` ADD INDEX(`id`, `productDetailId`);
+ALTER TABLE `cart` ADD CONSTRAINT `Id` FOREIGN KEY (`id`) REFERENCES `customer`(`id`) ON DELETE NO ACTION ON UPDATE NO ACTION; 
+ALTER TABLE `cart` ADD CONSTRAINT `productDetailId` FOREIGN KEY (`productDetailId`) REFERENCES `productdetail`(`productDetailId`) ON DELETE NO ACTION ON UPDATE NO ACTION
+
+
+ALTER TABLE `order` ADD PRIMARY KEY(`orderId`, `id`, `staffId`, `productDetailId`);
+ALTER TABLE `order` ADD INDEX(`id`, `staffId`, `productDetailId`);
+
+ALTER TABLE `order` ADD CONSTRAINT `Id2` FOREIGN KEY (`id`) REFERENCES `customer`(`id`) ON DELETE NO ACTION ON UPDATE NO ACTION; ALTER TABLE `order` ADD CONSTRAINT `staffId` FOREIGN KEY (`staffId`) REFERENCES `staff`(`staffId`) ON DELETE NO ACTION ON UPDATE NO ACTION; ALTER TABLE `order` ADD CONSTRAINT `productDetailId3` FOREIGN KEY (`productDetailId`) REFERENCES `productdetail`(`productDetailId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+/* insert into size */
+
+INSERT INTO `size` (`sizeId`, `sizeName`) VALUES ('S', 'Small');
+INSERT INTO `size` (`sizeId`, `sizeName`) VALUES ('M', 'Medium');
+INSERT INTO `size` (`sizeId`, `sizeName`) VALUES ('L', 'Large');
+INSERT INTO `size` (`sizeId`, `sizeName`) VALUES ('XL', 'XLarge');
+INSERT INTO `size` (`sizeId`, `sizeName`) VALUES ('2XL', '2XLarge');
+
+/* color */
+
+INSERT INTO `color` (`colorId`, `colorName`) VALUES ('Gray', 'Màu xám');
+INSERT INTO `color` (`colorId`, `colorName`) VALUES ('Brown', 'Màu nâu');
+INSERT INTO `color` (`colorId`, `colorName`) VALUES ('Black', 'Màu đen');
+INSERT INTO `color` (`colorId`, `colorName`) VALUES ('White', 'Màu trắng');
+INSERT INTO `color` (`colorId`, `colorName`) VALUES ('Red', 'Màu đỏ');
+INSERT INTO `color` (`colorId`, `colorName`) VALUES ('Beige', 'Màu be');
+INSERT INTO `color` (`colorId`, `colorName`) VALUES ('Green', 'Màu xanh rêu');
