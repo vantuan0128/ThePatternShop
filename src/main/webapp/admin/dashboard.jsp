@@ -1,3 +1,6 @@
+<%@page import="dao.OrderDAO"%>
+<%@page import="entity.Order"%>
+<%@page import="entity.Order"%>
 <%@page import="dao.ProductDetailDAO"%>
 <%@page import="entity.Customer"%>
 <%@page import="dao.CustomerDAO"%>
@@ -70,7 +73,7 @@
                             </div>
                         </div>
                         <div class="nav-item">
-                            <a href="">
+                            <a href="#" onClick="changeContent('manageorder')">
                                 <i class="fa-solid fa-shop"></i>
                                 <span>Shop</span>
                             </a>
@@ -106,8 +109,8 @@
                     <div class="right">
                         <i class="icon-top-nav fa-solid fa-message"></i>
                         <i class="icon-top-nav fa-regular fa-bell"></i>
-                        <img src="./assets/images/team3.jpg" alt="">
-                        <a href="logout2"><span>Log out</span></a>
+                        <img src="./assets/images/team1.png" alt="">
+                        <a style="margin-left: 20px;" href="logout2"><span style="color: #DB4040; font-weight:500; text-decoration:underline;">Log out</span></a>
                     </div>
                 </div>
 
@@ -231,8 +234,21 @@
                                                 <span><strong><%= tempProduct.getProductName()%></strong></span>
                                             </td>
                                             <td><%= tempProduct.getProductCost()%> VNĐ</td>
-                                            <td><%= new ProductDetailDAO().getQuantityByProductId(tempProduct.getProductId()) %></td>
+                                            <% 
+                                                int quantity = new ProductDetailDAO().getQuantityByProductId(tempProduct.getProductId());
+                                            %>
+                                            <td><%= quantity %></td>
+                                           
+                                            <% if (quantity > 0){
+                                                
+                                            %>
                                             <td class="active"><span>Còn hàng</span></td>
+
+                                             <% }else{
+                                            %>
+                                            <td class="active"><span>Hết hàng</span></td>
+
+                                            <% } %>
                                             <td><a href="EditProduct?productID=<%= tempProduct.getProductId()%>">Edit</a> &nbsp;&nbsp;&nbsp;&nbsp; 
                                                 <a href="DeleteProduct?productID=<%= tempProduct.getProductId()%>">Delete</a></td>
                                         </tr>
@@ -334,6 +350,72 @@
                                 <div class="content__manageuser__load-more">
                                     <button id="loadMoreUser" class="btn btn-load">Load more</button>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                                    
+                                    
+                    <!-- manage user-->
+                    <div class="content" id="manageorder">
+                        <div class="content__manageuser">
+                            <h1>Danh sách Đơn hàng</h1>
+                            <div class="content__manageuser-main">
+                                <div class="content__manageuser-top">
+                                    <div class="content__manageuser-top-left">
+                                        <div class="box"></div>
+                                        <span><strong>Đơn hàng</strong></span>
+                                    </div>
+                                    <div class="content__manageuser-top-right">
+                                        <div class="search">
+                                            <button class="btn icon-search"><i
+                                                    class="fa-solid fa-magnifying-glass"></i></button>
+                                            <input type="text" class="input-search"
+                                                   placeholder="Search or type a command">
+                                        </div>
+                                    </div>
+                                </div>
+                                <%
+                                    List<Order> orders = new OrderDAO().getAllOrder();
+                                %>
+                                <table class="content__manageuser-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="content__manageuser-alluser">
+                                                <input type="checkbox" class="alluser__check-box">
+                                                <span>Mã đơn hàng</span>
+                                            </th>
+                                            <th>Mã khách hàng</th>
+                                            <th>Ngày đặt</th>
+                                            <th>Tổng đơn</th>
+                                            <th>Trạng thái</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="tbodyUser">
+                                        <% for (Order ord: orders){
+                                        
+                                        %>
+                                        <tr class="manageuser__user-item">
+                                            <td class="manageuser__user-first-col">
+                                                <input type="checkbox" class="user__check-box">
+                                                <div class="manageuser__user-name">
+                                                    <span><strong><%= ord.getOrderId() %></strong></span>
+                                                    <span></span>
+                                                </div>
+                                            </td>
+                                            <td class="manageuser__user-email"><%= ord.getId() %></td>
+                                            <td class="manageuser__user-role"><%= ord.getCreatedDate() %><strong></strong></td>    
+                                            <td class="manageuser__user-operation"><strong><a style="text-decoration:none; color: #1A1D1F;" href=""><%= ord.getTotal() %> VNĐ</a></strong></td>
+                                            <td class="manageuser__user-status"><span><%= ord.getState()%></span></td>  
+
+                                        </tr>
+                                        <% } %>
+                                    </tbody>
+                                </table>
+
+<!--                                <div class="content__manageuser__load-more">
+                                    <button id="loadMoreUser" class="btn btn-load">Load more</button>
+                                </div>-->
                             </div>
                         </div>
                     </div>

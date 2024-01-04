@@ -248,7 +248,6 @@
                 var text = element.querySelector('span').textContent;
                 document.getElementById('_size-input').value = text;
                 // console.log(text);
-
             }
             // color Selected
             function selectColor(element) {
@@ -261,8 +260,13 @@
 
             // counter
             let currentQuantity = 1;
-            document.getElementById('_quantity-input').value = currentQuantity;
             
+            document.querySelectorAll('.detail__content-size ul li')[0].classList.add('active');
+            document.querySelectorAll('.detail__content-color img')[0].classList.add('selected');
+            document.getElementById('_quantity-input').value = currentQuantity;
+            document.getElementById('_color-input').value = document.querySelectorAll('.detail__content-color img')[0].alt;
+            document.getElementById('_size-input').value = document.querySelectorAll('.detail__content-size ul li')[0].querySelector('span').textContent;
+
             function incrementQuantity() {
                 currentQuantity++;
                 updateQuantity();
@@ -302,6 +306,7 @@
                     console.error("Element not found: " + contentId);
                 }
             }
+
         </script>
         <script src="assets/js/backtotop.js"></script>
         <script src="assets/js/overlay-hidden.js"></script>

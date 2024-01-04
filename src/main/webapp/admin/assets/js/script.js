@@ -82,7 +82,6 @@ document.addEventListener('DOMContentLoaded', function () {
     
         const selectedSizes = Array.from(document.querySelectorAll('.checkbox[data-category="size"]:checked'))
             .map(checkbox => checkbox.id.replace('Checkbox', ''));
-    
         displayResults(selectedColors, selectedSizes);
     }
   
@@ -119,6 +118,8 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+// gửi qua csdl
 function updateHiddenInputs(){
     $('form input[type="hidden"]').remove();
     var tableData = [];

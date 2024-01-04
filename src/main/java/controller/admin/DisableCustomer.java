@@ -46,7 +46,7 @@ public class DisableCustomer extends HttpServlet {
         }
         
         dao.updateState(id, state);
-        response.sendRedirect(request.getContextPath() + "/admin/dashboard.jsp");
+        response.sendRedirect(request.getContextPath() + "/admin/GetAllProducts");
     }
 
 }

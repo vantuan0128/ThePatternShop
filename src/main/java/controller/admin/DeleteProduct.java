@@ -5,6 +5,7 @@
 package controller.admin;
 
 import dao.ProductDAO;
+import dao.ProductDetailDAO;
 import entity.Product;
 import java.io.File;
 import java.io.IOException;
@@ -75,6 +76,7 @@ public class DeleteProduct extends HttpServlet {
         else{
             System.out.println("ERR");
         }
+        new ProductDetailDAO().deleteProductDetailByProductId(id);
         productDAO.deleteProduct(id);
         response.sendRedirect("/ThePatternShop/admin/GetAllProducts");
     }

@@ -25,7 +25,7 @@ public class DBContext {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
-            System.out.println("Connect Successfully");
+//            System.out.println("Connect Successfully");
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

@@ -40,19 +40,6 @@ public class PaymentServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        response.setContentType("text/html;charset=UTF-8");
-//        try ( PrintWriter out = response.getWriter()) {
-//            /* TODO output your page here. You may use following sample code. */
-//            out.println("<!DOCTYPE html>");
-//            out.println("<html>");
-//            out.println("<head>");
-//            out.println("<title>Servlet PaymentServlet</title>");            
-//            out.println("</head>");
-//            out.println("<body>");
-//            out.println("<h1>Servlet PaymentServlet at " + request.getContextPath() + "</h1>");
-//            out.println("</body>");
-//            out.println("</html>");
-//        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -120,8 +107,8 @@ public class PaymentServlet extends HttpServlet {
             out.println("<title>Servlet PaymentServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet PaymentServlet at " + request.getContextPath() + "</h1>");
-            out.println("<h1>" + " " + id + " " + "AA" + "</h1>");
+            out.println("<h1>" + " " + "Cảm ơn bạn đã lựa chọn The Pattern" + " " + "</h1>");
+            out.println("<h1>" + " " + id + " " + "</h1>");
             out.println(name);
             out.println(mobiPhone);
             out.println(address);
@@ -130,6 +117,8 @@ public class PaymentServlet extends HttpServlet {
             out.println(paymentMethod);
             out.println(createdDate);
             out.println(deliveryDate);
+            String url = "/ThePatternShop";
+            out.println("<a href='${url}'>" + "Back" + "</a>");
             out.println("</body>");
             out.println("</html>");
         }

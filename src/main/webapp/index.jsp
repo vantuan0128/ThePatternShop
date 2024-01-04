@@ -141,7 +141,7 @@
             </div>
 
             <div class="button-watch-more">
-                <a href=""><img src="assets/images/banners/see-more.png" alt=""></a>
+                <a href="searchProduct"><img src="assets/images/banners/see-more.png" alt=""></a>
             </div>
 
             <div class="new-arrivals-title">
@@ -205,7 +205,7 @@
                 </div>
             </div>
             <div class="button-watch-more">
-                <a href=""><img src="assets/images/banners/see-more.png" alt=""></a>
+                <a href="searchProduct"><img src="assets/images/banners/see-more.png" alt=""></a>
             </div>
 
             <!-- big banner -->

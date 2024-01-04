@@ -11,7 +11,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -58,6 +64,7 @@ public class ProductDetailDAO {
             while(rs.next()) {
                 list.add(rs.getString(1));
             }
+            Collections.sort(list);
             return list;
         }
         catch(Exception e){
@@ -96,6 +103,11 @@ public class ProductDetailDAO {
             while(rs.next()) {
                 list.add(rs.getString(1));
             }
+            Set<String> st = new TreeSet<>();
+            for (String s: list) st.add(s);
+            list.clear();
+            for (String s: st) list.add(s);
+//            System.out.println(list);
             return list;
         }
         catch(Exception e){
@@ -171,6 +183,19 @@ public class ProductDetailDAO {
             ps = conn.prepareStatement(query);
             ps.setInt(1, newQuantity);
             ps.setString(2, productDetailId);
+            ps.executeUpdate();
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+    }
+    
+    public void deleteProductDetailByProductId(String productId){
+        String query = "delete from productdetail where productId = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, productId);
             ps.executeUpdate();
         }
         catch(Exception e){
